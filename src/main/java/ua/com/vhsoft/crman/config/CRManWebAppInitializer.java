@@ -1,4 +1,3 @@
-
 package ua.com.vhsoft.crman.config;
 
 import javax.servlet.ServletContext;
@@ -18,7 +17,7 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(CRManMVCConfig.class); // TODO add Security, Spring Data JPA etc.
+        ctx.register(CRManMVCConfig.class, CRManJPAConfig.class); // TODO add Security, Spring Data JPA etc.
         ctx.setServletContext(servletContext);
         
         servletContext.addListener(new ContextLoaderListener(ctx));
