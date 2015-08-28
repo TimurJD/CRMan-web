@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SysPosition;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SysPositionRepository extends JpaRepository<Integer, SysPosition>, QueryDslPredicateExecutor<SysPosition> {
+public interface SysPositionRepository extends JpaRepository<SysPosition, Integer>, QueryDslPredicateExecutor<SysPosition> {
     
 }

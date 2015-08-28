@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblLead;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblLeadRepository extends JpaRepository<Integer, TblLead>, QueryDslPredicateExecutor<TblLead> {
+public interface TblLeadRepository extends JpaRepository<TblLead, Integer>, QueryDslPredicateExecutor<TblLead> {
     
 }

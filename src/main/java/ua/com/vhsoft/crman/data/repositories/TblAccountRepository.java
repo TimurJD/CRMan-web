@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblAccount;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblAccountRepository extends JpaRepository<Integer, TblAccount>, QueryDslPredicateExecutor<TblAccount> {
+public interface TblAccountRepository extends JpaRepository<TblAccount, Integer>, QueryDslPredicateExecutor<TblAccount> {
     
 }

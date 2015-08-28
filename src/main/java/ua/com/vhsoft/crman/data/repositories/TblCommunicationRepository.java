@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblCommunication;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblCommunicationRepository extends JpaRepository<Integer, TblCommunication>, QueryDslPredicateExecutor<TblCommunication> {
+public interface TblCommunicationRepository extends JpaRepository<TblCommunication, Integer>, QueryDslPredicateExecutor<TblCommunication> {
     
 }

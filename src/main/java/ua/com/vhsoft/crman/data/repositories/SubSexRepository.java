@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubSex;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubSexRepository extends JpaRepository<Integer, SubSex>, QueryDslPredicateExecutor<SubSex> {
+public interface SubSexRepository extends JpaRepository<SubSex, Integer>, QueryDslPredicateExecutor<SubSex> {
     
 }

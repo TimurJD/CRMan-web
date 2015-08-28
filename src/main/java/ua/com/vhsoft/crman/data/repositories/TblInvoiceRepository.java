@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblInvoice;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblInvoiceRepository extends JpaRepository<Integer, TblInvoice>, QueryDslPredicateExecutor<TblInvoice> {
+public interface TblInvoiceRepository extends JpaRepository<TblInvoice, Integer>, QueryDslPredicateExecutor<TblInvoice> {
     
 }

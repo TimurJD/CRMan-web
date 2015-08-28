@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubCurrency;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubCurrencyRepository extends JpaRepository<Integer, SubCurrency>, QueryDslPredicateExecutor<SubCurrency> {
+public interface SubCurrencyRepository extends JpaRepository<SubCurrency, Integer>, QueryDslPredicateExecutor<SubCurrency> {
     
 }

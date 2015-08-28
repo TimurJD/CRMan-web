@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubActivityResult;
  *
  * @author VH
  */
-public interface SubActivityResultRepository extends JpaRepository<Integer, SubActivityResult>, QueryDslPredicateExecutor<SubActivityResult> {
+public interface SubActivityResultRepository extends JpaRepository<SubActivityResult, Integer>, QueryDslPredicateExecutor<SubActivityResult> {
 
 }

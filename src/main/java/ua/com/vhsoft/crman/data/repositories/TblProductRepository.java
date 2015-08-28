@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblProduct;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblProductRepository extends JpaRepository<Integer, TblProduct>, QueryDslPredicateExecutor<TblProduct> {
+public interface TblProductRepository extends JpaRepository<TblProduct, Integer>, QueryDslPredicateExecutor<TblProduct> {
     
 }

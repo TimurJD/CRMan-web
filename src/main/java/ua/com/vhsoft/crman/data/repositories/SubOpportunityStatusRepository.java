@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubOpportunityStatus;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubOpportunityStatusRepository extends JpaRepository<Integer, SubOpportunityStatus>, QueryDslPredicateExecutor<SubOpportunityStatus> {
+public interface SubOpportunityStatusRepository extends JpaRepository<SubOpportunityStatus, Integer>, QueryDslPredicateExecutor<SubOpportunityStatus> {
     
 }

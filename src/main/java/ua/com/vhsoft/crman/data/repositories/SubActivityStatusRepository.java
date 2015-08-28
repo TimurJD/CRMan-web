@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubActivityStatus;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubActivityStatusRepository extends JpaRepository<Integer, SubActivityStatus>, QueryDslPredicateExecutor<SubActivityStatus> {
+public interface SubActivityStatusRepository extends JpaRepository<SubActivityStatus, Integer>, QueryDslPredicateExecutor<SubActivityStatus> {
     
 }

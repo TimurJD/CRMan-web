@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubLeadSource;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubLeadSourceRepository extends JpaRepository<Integer, SubLeadSource>, QueryDslPredicateExecutor<SubLeadSource> {
+public interface SubLeadSourceRepository extends JpaRepository<SubLeadSource, Integer>, QueryDslPredicateExecutor<SubLeadSource> {
     
 }

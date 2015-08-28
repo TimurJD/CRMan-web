@@ -51,7 +51,7 @@ public class CRManJPAConfig {
             dataSource.setJdbcUrl(env.getRequiredProperty(PROP_DATABASE_URL));
             dataSource.setUser(env.getRequiredProperty(PROP_DATABASE_USERNAME));
             dataSource.setPassword(env.getRequiredProperty(PROP_DATABASE_PASSWORD));
-            dataSource.setMinPoolSize(5);
+            dataSource.setMinPoolSize(1);
             dataSource.setMaxPoolSize(20);
             dataSource.setMaxStatements(50);
             dataSource.setIdleConnectionTestPeriod(3000);

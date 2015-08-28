@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SysLog;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SysLogRepository extends JpaRepository<Integer, SysLog>, QueryDslPredicateExecutor<SysLog> {
+public interface SysLogRepository extends JpaRepository<SysLog, Integer>, QueryDslPredicateExecutor<SysLog> {
     
 }

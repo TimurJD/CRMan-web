@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblActivity;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblActivityRepository extends JpaRepository<Integer, TblActivity>, QueryDslPredicateExecutor<TblActivity> {
+public interface TblActivityRepository extends JpaRepository<TblActivity, Integer>, QueryDslPredicateExecutor<TblActivity> {
     
 }

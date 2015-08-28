@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubInvoiceStatus;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubInvoiceStatusRepository extends JpaRepository<Integer, SubInvoiceStatus>, QueryDslPredicateExecutor<SubInvoiceStatus> {
+public interface SubInvoiceStatusRepository extends JpaRepository<SubInvoiceStatus, Integer>, QueryDslPredicateExecutor<SubInvoiceStatus> {
     
 }

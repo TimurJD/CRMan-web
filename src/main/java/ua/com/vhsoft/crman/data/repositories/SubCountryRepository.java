@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubCountry;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubCountryRepository extends JpaRepository<Integer, SubCountry>, QueryDslPredicateExecutor<SubCountry> {
+public interface SubCountryRepository extends JpaRepository<SubCountry, Integer>, QueryDslPredicateExecutor<SubCountry> {
     
 }

@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblAddress;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblAddressRepository extends JpaRepository<Integer, TblAddress>, QueryDslPredicateExecutor<TblAddress> {
+public interface TblAddressRepository extends JpaRepository<TblAddress, Integer>, QueryDslPredicateExecutor<TblAddress> {
     
 }

@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubRegion;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubRegionRepository extends JpaRepository<Integer, SubRegion>, QueryDslPredicateExecutor<SubRegion> {
+public interface SubRegionRepository extends JpaRepository<SubRegion, Integer>, QueryDslPredicateExecutor<SubRegion> {
     
 }

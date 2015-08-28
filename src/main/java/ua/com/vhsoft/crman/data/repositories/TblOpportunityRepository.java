@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblOpportunity;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblOpportunityRepository extends JpaRepository<Integer, TblOpportunity>, QueryDslPredicateExecutor<TblOpportunity> {
+public interface TblOpportunityRepository extends JpaRepository<TblOpportunity, Integer>, QueryDslPredicateExecutor<TblOpportunity> {
     
 }

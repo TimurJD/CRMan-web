@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SysPermission;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SysPermissionRepository extends JpaRepository<Integer, SysPermission>, QueryDslPredicateExecutor<SysPermission> {
+public interface SysPermissionRepository extends JpaRepository<SysPermission, Integer>, QueryDslPredicateExecutor<SysPermission> {
     
 }

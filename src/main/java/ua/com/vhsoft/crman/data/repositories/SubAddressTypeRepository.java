@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubAddressType;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubAddressTypeRepository extends JpaRepository<Integer, SubAddressType>, QueryDslPredicateExecutor<SubAddressType>{
+public interface SubAddressTypeRepository extends JpaRepository<SubAddressType, Integer>, QueryDslPredicateExecutor<SubAddressType>{
     
 }

@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubUnitType;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubUnitTypeRepository extends JpaRepository<Integer, SubUnitType>, QueryDslPredicateExecutor<SubUnitType> {
-    
+public interface SubUnitTypeRepository extends JpaRepository<SubUnitType, Integer>, QueryDslPredicateExecutor<SubUnitType> {
+
 }

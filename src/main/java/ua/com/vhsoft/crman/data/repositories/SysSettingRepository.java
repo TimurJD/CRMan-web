@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SysSetting;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SysSettingRepository extends JpaRepository<Integer, SysSetting>, QueryDslPredicateExecutor<SysSetting> {
+public interface SysSettingRepository extends JpaRepository<SysSetting, Integer>, QueryDslPredicateExecutor<SysSetting> {
     
 }

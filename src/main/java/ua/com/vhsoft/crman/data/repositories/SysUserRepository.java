@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SysUser;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SysUserRepository extends JpaRepository<Integer, SysUser>, QueryDslPredicateExecutor<SysUser> {
+public interface SysUserRepository extends JpaRepository<SysUser, Integer>, QueryDslPredicateExecutor<SysUser> {
     
 }

@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubRelationType;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubRelationTypeRepository extends JpaRepository<Integer, SubRelationType>, QueryDslPredicateExecutor<SubRelationType> {
+public interface SubRelationTypeRepository extends JpaRepository<SubRelationType, Integer>, QueryDslPredicateExecutor<SubRelationType> {
     
 }

@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.TblContact;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface TblContactRepository extends JpaRepository<Integer, TblContact>, QueryDslPredicateExecutor<TblContact> {
+public interface TblContactRepository extends JpaRepository<TblContact, Integer>, QueryDslPredicateExecutor<TblContact> {
     
 }

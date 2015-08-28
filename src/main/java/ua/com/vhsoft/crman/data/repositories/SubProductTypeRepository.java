@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubProductType;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubProductTypeRepository extends JpaRepository<Integer, SubProductType>, QueryDslPredicateExecutor<SubProductType> {
+public interface SubProductTypeRepository extends JpaRepository<SubProductType, Integer>, QueryDslPredicateExecutor<SubProductType> {
     
 }

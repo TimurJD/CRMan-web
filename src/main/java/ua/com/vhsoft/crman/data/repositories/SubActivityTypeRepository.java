@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubActivityType;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubActivityTypeRepository extends JpaRepository<Integer, SubActivityType>, QueryDslPredicateExecutor<SubActivityType> {
+public interface SubActivityTypeRepository extends JpaRepository<SubActivityType, Integer>, QueryDslPredicateExecutor<SubActivityType> {
     
 }

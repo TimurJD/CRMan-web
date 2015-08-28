@@ -8,6 +8,6 @@ import ua.com.vhsoft.crman.mvc.models.SubCity;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public interface SubCityRepository extends JpaRepository<Integer, SubCity>, QueryDslPredicateExecutor<SubCity> {
+public interface SubCityRepository extends JpaRepository<SubCity, Integer>, QueryDslPredicateExecutor<SubCity> {
     
 }
