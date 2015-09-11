@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller()
 public class TestController {
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String helloWorld(Model model) {
         Logger logger = Logger.getLogger(this.getClass());
         logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!logger message");

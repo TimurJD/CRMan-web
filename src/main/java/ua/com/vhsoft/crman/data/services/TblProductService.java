@@ -15,25 +15,25 @@ import java.util.List;
 public class TblProductService implements AbstractService<TblProduct> {
 
 	@Resource
-	private TblProductRepository tblOrderRepository;
+	private TblProductRepository tblProductRepository;
 
 	@Override
 	public TblProduct addOrUpdate(TblProduct entity) {
-		return tblOrderRepository.save(entity);
+		return tblProductRepository.save(entity);
 	}
 
 	@Override
 	public List<TblProduct> findAll(Predicate predicate) {
-		return (List<TblProduct>) tblOrderRepository.findAll(predicate);
+		return (List<TblProduct>) tblProductRepository.findAll(predicate);
 	}
 
 	@Override
 	public List<TblProduct> findAll() {
-		return tblOrderRepository.findAll();
+		return tblProductRepository.findAll();
 	}
 
 	@Override
 	public void delete(TblProduct entity) {
-		tblOrderRepository.delete(entity);
+		tblProductRepository.delete(entity);
 	}
 }
