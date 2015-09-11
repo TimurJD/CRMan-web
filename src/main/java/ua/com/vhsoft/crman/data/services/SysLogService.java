@@ -1,12 +1,11 @@
 package ua.com.vhsoft.crman.data.services;
 
 import com.mysema.query.types.Predicate;
-
-import java.util.List;
-import javax.annotation.Resource;
-
 import ua.com.vhsoft.crman.data.repositories.SysLogRepository;
 import ua.com.vhsoft.crman.mvc.models.SysLog;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
