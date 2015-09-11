@@ -5,12 +5,14 @@ import com.mysema.query.types.Predicate;
 import java.util.List;
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
 import ua.com.vhsoft.crman.data.repositories.SysLogRepository;
 import ua.com.vhsoft.crman.mvc.models.SysLog;
 
 /**
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
+@Service("sysLogService")
 public class SysLogService implements AbstractService<SysLog> {
 
     @Resource

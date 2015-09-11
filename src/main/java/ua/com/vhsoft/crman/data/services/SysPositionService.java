@@ -1,6 +1,7 @@
 package ua.com.vhsoft.crman.data.services;
 
 import com.mysema.query.types.Predicate;
+import org.springframework.stereotype.Service;
 import ua.com.vhsoft.crman.data.repositories.SysPositionRepository;
 import ua.com.vhsoft.crman.mvc.models.SysPosition;
 
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
+@Service("sysPositionService")
 public class SysPositionService implements AbstractService<SysPosition> {
 
     @Resource
