@@ -26,7 +26,4 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
         registration.setLoadOnStartup(1);
         registration.addMapping("/");
     }
-
-
-    
 }
