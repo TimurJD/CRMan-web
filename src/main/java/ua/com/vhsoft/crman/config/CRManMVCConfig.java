@@ -22,6 +22,4 @@ public class CRManMVCConfig {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-
-    
 }
