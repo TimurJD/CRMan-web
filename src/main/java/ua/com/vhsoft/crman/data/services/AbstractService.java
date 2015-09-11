@@ -1,6 +1,7 @@
 package ua.com.vhsoft.crman.data.services;
 
 import com.mysema.query.types.Predicate;
+
 import java.util.List;
 
 /**
