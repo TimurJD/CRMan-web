@@ -9,9 +9,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 	<title>Signin</title>
 	
 	<spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
