@@ -34,7 +34,7 @@ public class RegisterController {
 	@RequestMapping
 	public String showRegistrationForm() {
 		Logger logger = Logger.getLogger(this.getClass());
-		logger.info("User register!");
+		logger.info("User register jsp!");
 		return "user-registration";
 	}
 	
