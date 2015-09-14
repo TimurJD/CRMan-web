@@ -6,16 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author Timur Berezhnoi
+ *
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-@Controller
-public class LoginController {
-
+@Controller()
+public class ActivityController {
+    
     private final Logger LOGGER = Logger.getLogger(this.getClass());
-
-    @RequestMapping("/login")
-    public String login(Model model) {
-        LOGGER.info("User login view request");
-        return "login";
+    
+    @RequestMapping(value = "/activities")
+    public String showActivities(Model model) {
+        LOGGER.info("Activities view request");
+        return "activities";
     }
+    
+    
 }
