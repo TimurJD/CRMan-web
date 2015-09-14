@@ -8,6 +8,8 @@
 <spring:url var = "contacts" value="/contacts" />
 <spring:url var = "contracts" value="/contracts" />
 <spring:url var = "invoices" value="/invoices" />
+<spring:url var = "orders" value="/orders" />
+<spring:url var = "quotes" value="/quotes" />
 <spring:url var = "admin" value="/admin" />
 <spring:url var = "about" value="/about" />
 <spring:url var = "troubleshooting" value="/troubleshooting" />
@@ -27,6 +29,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Sales<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="${contracts}">Opportunities</a></li>
+                        <li><a href="${quotes}">Quotes</a></li>
                         <li><a href="${invoices}">Orders</a></li>
                     </ul>
                 </li>

@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>
 
 
-<footer class="footer">
+<footer class="footer ">
     <div class="container well">
         <div class="row">
             <div class="col-md-6"><a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a></div>
