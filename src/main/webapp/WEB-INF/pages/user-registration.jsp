@@ -21,15 +21,6 @@
 	<!-- Bootstrap core CSS -->
 	<link href="${coreCss}" rel="stylesheet" />
 	
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-validation.js" />"></script>
-	<style>
-		body { 
-			min-height: 500px;
-			padding-top: 70px;
-		}
-	</style>
 <body>
 <div class="container">
 	<form:form commandName="sys_user" cssClass="form-horizontal registrationForm">

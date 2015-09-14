@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ua.com.vhsoft.crman.data.services.SysUserService;
 import ua.com.vhsoft.crman.mvc.models.SysUser;
+import ua.com.vhsoft.crman.tools.Cryptographer;
 
 /**
  * @author Timur Berezhnoi
@@ -45,6 +46,7 @@ public class RegisterController {
 		}
 		
 		user.setCreatedOn(new Date());
+		user.setPasswordHash(Cryptographer.getDoubleMD5Hash(user.getPasswordHash().getBytes()));
 		sysUserService.addOrUpdate(user);
 		redirectAttributes.addFlashAttribute("success", true);
 		return "redirect:/login"; // TODO think where to redirect 
