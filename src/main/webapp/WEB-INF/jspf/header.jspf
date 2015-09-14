@@ -1,29 +1,47 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
+
+<spring:url var = "login" value="/login" />
+<spring:url var = "activities" value="/activities" />
+<spring:url var = "leeds" value="/leeds" />
+<spring:url var = "accounts" value="/accounts" />
+<spring:url var = "contacts" value="/contacts" />
+<spring:url var = "contracts" value="/contracts" />
+<spring:url var = "invoices" value="/invoices" />
+<spring:url var = "admin" value="/admin" />
+<spring:url var = "about" value="/about" />
+<spring:url var = "troubleshooting" value="/troubleshooting" />
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">CRMan</a>
+            <a class="navbar-brand" href="${activities}">CRMan</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li> 
-                <li><a href="#">Page 3</a></li> 
+                <li><a href="${activities}">Home</a></li>
+                <li><a href="${leads}">Leeds</a></li>
+                <li><a href="${contacts}">Contacts</a></li> 
+                <li><a href="${accounts}">Accounts</a></li> 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1<span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">Sales<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Page 1-1</a></li>
-                        <li><a href="#">Page 1-2</a></li>
-                        <li><a href="#">Page 1-3</a></li> 
+                        <li><a href="${contracts}">Opportunities</a></li>
+                        <li><a href="${invoices}">Orders</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">Documents<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${contracts}">Contracts</a></li>
+                        <li><a href="${invoices}">Invoices</a></li>
                     </ul>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-form form-group"><form><span class="glyphicon glyphicon-search navbar-form form-group"></span> <input type="text" placeholder="Search..." data-ng-model="search" class="navbar-form form-group" /></form></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                <li><a href="${login}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
             </ul>
         </div>
     </div>
