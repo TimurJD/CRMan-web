@@ -1,11 +1,21 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
+
 <footer class="footer">
-    <div class="container ">
-        <div class="col-md-3"><p class="text-muted">CRMan</p></div>
-        <div class="col-md-3"><a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a></div>
-        
+    <div class="container well">
+        <div class="row">
+            <div class="col-md-6"><a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a></div>
+            <div class="col-md-2 text-right">
+                <a href="${admin}" class="text-muted">Manage platform</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${about}" class="text-muted">About us</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${troubleshooting}" class="text-muted">Report bug</a>
+            </div>
+        </div>
     </div>
 </footer>
 

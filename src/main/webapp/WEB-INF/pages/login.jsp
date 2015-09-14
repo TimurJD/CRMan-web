@@ -7,18 +7,18 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Signin</title>
+    <head>
+        <title>Signin</title>
 
-<spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
-<spring:url value="/resources/css/login.css" var="loginCss" />
+        <spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
+        <spring:url value="/resources/css/login.css" var="loginCss" />
 
-<!-- Bootstrap core CSS -->
-<link href="${coreCss}" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="${coreCss}" rel="stylesheet" />
 
-<!-- Custom styles for this template -->
-<link href="${loginCss}" rel="stylesheet" />
-</head>
+		<!-- Custom styles for this template -->
+		<link href="${loginCss}" rel="stylesheet" />
+	</head>
 <body>
 	<div class="container">
 		<form class="form-signin" role="form" action='<spring:url value="/j_spring_security_check" />' method="POST">
