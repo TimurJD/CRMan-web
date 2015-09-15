@@ -49,6 +49,8 @@ public class SysUser implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "password_hash")
     private String passwordHash;
+    @Column(name = "enabled")
+    private Boolean enabled;
     @Size(max = 45)
     @Column(name = "first_name")
     private String firstName;
@@ -428,6 +430,16 @@ public class SysUser implements Serializable {
         this.tblOpportunitySet = tblOpportunitySet;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

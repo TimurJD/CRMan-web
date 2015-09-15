@@ -24,30 +24,7 @@
         
 
         <div class="container">
-            <h1>Hello World of activities!</h1>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-          
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h1>Hello World of activities!</h1>
+            
         </div>
 
         <%@ include file="../jspf/footer.jspf" %>

@@ -17,7 +17,7 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(CRManMVCConfig.class, CRManJPAConfig.class); // TODO add Security, Spring Data JPA etc.
+        ctx.register(CRManMVCConfig.class, CRManJPAConfig.class, CRManSecurityConfig.class);
         ctx.setServletContext(servletContext);
         
         servletContext.addListener(new ContextLoaderListener(ctx));
@@ -26,4 +26,6 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
         registration.setLoadOnStartup(1);
         registration.addMapping("/");
     }
+    
+    
 }
