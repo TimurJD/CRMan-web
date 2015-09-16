@@ -8,16 +8,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Signin</title>
+        <title>Sign in</title>
 
         <spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
         <spring:url value="/resources/css/login.css" var="loginCss" />
 
         <!-- Bootstrap core CSS -->
-        <link href="${coreCss}" rel="stylesheet" />
+        <link href="${coreCss}" type="text/css" rel="stylesheet" />
 
         <!-- Custom styles for this template -->
-        <link href="${loginCss}" rel="stylesheet" />
+        <link href="${loginCss}" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <spring:url value="/j_spring_security_check"  var="ssCheck" />
@@ -31,6 +31,7 @@
                         <input type="checkbox" value="remember-me">Remember me
                     </label>
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>

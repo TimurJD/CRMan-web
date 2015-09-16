@@ -42,12 +42,25 @@
                 </li>
             </ul>
 
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-form form-group"><form><span class="glyphicon glyphicon-search navbar-form form-group"></span> <input type="text" placeholder="Search..." data-ng-model="search" class="navbar-form form-group" /></form></li>
-                <li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                <li><a href="javascript:formLogoutSubmit()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
             </ul>
+            <form action="${logout}" method="POST" id="logoutForm">
+                <input type="hidden" 
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}" />
+            </form>        
         </div>
     </div>
 </nav>
+<script>
+    function formLogoutSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
+</script>
+
+
 <br>
 <br>

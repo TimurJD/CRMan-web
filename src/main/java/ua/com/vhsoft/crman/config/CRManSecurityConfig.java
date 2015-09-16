@@ -28,22 +28,19 @@ public class CRManSecurityConfig extends WebSecurityConfigurerAdapter {
                         + "(select p.user_id, r.role_name from sys_permissions as p inner join\n"
                         + "sys_roles as r on r.role_id = p.role_id) as x\n"
                         + "on x.user_id = u.user_id where login=?;");
+        
+//       auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER", "ADMIN");
 
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         System.out.println("SECURITY CHECK");
-        http.authorizeRequests().antMatchers("/activities**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/login**").permitAll()
+        http.authorizeRequests().antMatchers("/**").access("hasRole('ROLE_USER')")
                 .and().formLogin().defaultSuccessUrl("/index")
                 .usernameParameter("j_username")
-                .passwordParameter("j_password")
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .and().logout().logoutSuccessUrl("/login?logout")
-                .and().exceptionHandling().accessDeniedPage("/error403")
-                .and().csrf();
+                .passwordParameter("j_password");
+               
 
     }
 
