@@ -1,12 +1,11 @@
 package ua.com.vhsoft.crman.data.services;
 
 import com.mysema.query.types.Predicate;
+import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import ua.com.vhsoft.crman.data.repositories.SysUserRepository;
 import ua.com.vhsoft.crman.mvc.models.SysUser;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>

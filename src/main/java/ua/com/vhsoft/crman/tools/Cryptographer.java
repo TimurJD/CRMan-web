@@ -4,12 +4,13 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.apache.log4j.Logger;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-public class Cryptographer {
+public class Cryptographer implements PasswordEncoder {
 
     public static final Logger LOGGER = Logger.getLogger(Cryptographer.class);
 
@@ -46,5 +47,23 @@ public class Cryptographer {
         hashtext = getMD5Hash(hashtext.getBytes());   //2nd
 
         return hashtext;
+    }
+
+    /**
+     * Encode double md5 hash
+     * @param cs
+     * @return 
+     */
+    @Override
+    public String encode(CharSequence cs) {
+        return getDoubleMD5Hash(cs.toString().getBytes());
+    }
+
+    @Override
+    public boolean matches(CharSequence cs, String string) {
+        if (encode(cs).equals(string)){
+            return true;
+        }
+        return false;
     }
 }

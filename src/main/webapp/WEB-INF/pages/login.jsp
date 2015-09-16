@@ -5,6 +5,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +32,13 @@
                         <input type="checkbox" value="remember-me">Remember me
                     </label>
                 </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <br />
+                <c:if test="${param.status=='error'}">
+                    <label style="color:red">Invalid username or password!!</label>
+                </c:if>
+                <c:if test="${param.status=='logout'}">
+                    <label style="color:green">Logged out successfully!</label>
+                </c:if>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>

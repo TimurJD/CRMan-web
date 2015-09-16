@@ -14,7 +14,7 @@ public class IndexController {
     
     @RequestMapping(path = {"/", "/index"}, method = RequestMethod.GET)
     public String entryPoint(Model model) {
-        return "activities"; //TODO get this page from properties
+        return "activities";
     }
     
     @RequestMapping("/error403")
