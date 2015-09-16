@@ -1,7 +1,9 @@
 package ua.com.vhsoft.crman.mvc.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -10,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
     
-    @RequestMapping("/")
-    public String entryPoint(String model) {
-        return "activities";
+    @RequestMapping(path = {"/", "/index"}, method = RequestMethod.GET)
+    public String entryPoint(Model model) {
+        return "activities"; //TODO get this page from properties
     }
     
+    @RequestMapping("/error403")
+    public String accesDeniedPage(Model model) {
+        return "error403";
+    }
 }
