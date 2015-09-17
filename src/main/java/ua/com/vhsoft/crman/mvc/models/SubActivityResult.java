@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,16 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_activity_results")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubActivityResult.findAll", query = "SELECT s FROM SubActivityResult s")})
 public class SubActivityResult implements Serializable {
@@ -34,7 +32,7 @@ public class SubActivityResult implements Serializable {
     @Size(max = 60)
     @Column(name = "activity_result")
     private String activityResult;
-    @OneToMany(mappedBy = "resultId")
+    @OneToMany(mappedBy = "resultId", fetch = FetchType.EAGER)
     private Set<TblActivity> tblActivitySet;
 
     public SubActivityResult() {
@@ -60,7 +58,6 @@ public class SubActivityResult implements Serializable {
         this.activityResult = activityResult;
     }
 
-    @XmlTransient
     public Set<TblActivity> getTblActivitySet() {
         return tblActivitySet;
     }

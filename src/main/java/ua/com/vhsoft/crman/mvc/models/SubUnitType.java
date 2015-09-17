@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,16 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_unit_types")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubUnitType.findAll", query = "SELECT s FROM SubUnitType s")})
 public class SubUnitType implements Serializable {
@@ -34,12 +32,14 @@ public class SubUnitType implements Serializable {
     @Size(max = 45)
     @Column(name = "unit_type")
     private String unitType;
-    @OneToMany(mappedBy = "unitTypeId")
+    @OneToMany(mappedBy = "unitTypeId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "unitTypeId")
+    @OneToMany(mappedBy = "unitTypeId", fetch = FetchType.EAGER)
     private Set<SubContractProduct> subContractProductSet;
-    @OneToMany(mappedBy = "unitTypeId")
+    @OneToMany(mappedBy = "unitTypeId", fetch = FetchType.EAGER)
     private Set<TblProduct> tblProductSet;
+    @OneToMany(mappedBy = "unitTypeId", fetch = FetchType.EAGER)
+    private Set<TblQuote> tblQuoteSet;
 
     public SubUnitType() {
     }
@@ -64,7 +64,6 @@ public class SubUnitType implements Serializable {
         this.unitType = unitType;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }
@@ -73,7 +72,6 @@ public class SubUnitType implements Serializable {
         this.tblOrderSet = tblOrderSet;
     }
 
-    @XmlTransient
     public Set<SubContractProduct> getSubContractProductSet() {
         return subContractProductSet;
     }
@@ -82,13 +80,20 @@ public class SubUnitType implements Serializable {
         this.subContractProductSet = subContractProductSet;
     }
 
-    @XmlTransient
     public Set<TblProduct> getTblProductSet() {
         return tblProductSet;
     }
 
     public void setTblProductSet(Set<TblProduct> tblProductSet) {
         this.tblProductSet = tblProductSet;
+    }
+
+    public Set<TblQuote> getTblQuoteSet() {
+        return tblQuoteSet;
+    }
+
+    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
+        this.tblQuoteSet = tblQuoteSet;
     }
 
     @Override

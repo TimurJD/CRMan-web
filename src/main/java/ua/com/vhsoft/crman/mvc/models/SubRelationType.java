@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,16 +14,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_relation_types")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubRelationType.findAll", query = "SELECT s FROM SubRelationType s")})
 public class SubRelationType implements Serializable {
@@ -35,9 +33,9 @@ public class SubRelationType implements Serializable {
     @Size(max = 45)
     @Column(name = "type_name")
     private String typeName;
-    @OneToMany(mappedBy = "relationTypeId")
+    @OneToMany(mappedBy = "relationTypeId", fetch = FetchType.EAGER)
     private Set<TblLead> tblLeadSet;
-    @OneToMany(mappedBy = "relationTypeId")
+    @OneToMany(mappedBy = "relationTypeId", fetch = FetchType.EAGER)
     private Set<TblContact> tblContactSet;
 
     public SubRelationType() {
@@ -63,7 +61,6 @@ public class SubRelationType implements Serializable {
         this.typeName = typeName;
     }
 
-    @XmlTransient
     public Set<TblLead> getTblLeadSet() {
         return tblLeadSet;
     }
@@ -72,7 +69,6 @@ public class SubRelationType implements Serializable {
         this.tblLeadSet = tblLeadSet;
     }
 
-    @XmlTransient
     public Set<TblContact> getTblContactSet() {
         return tblContactSet;
     }

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,15 +18,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_orders")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblOrder.findAll", query = "SELECT t FROM TblOrder t")})
 public class TblOrder implements Serializable {
@@ -58,39 +57,42 @@ public class TblOrder implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
-    @ManyToOne
-    private TblContact contactId;
+    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private TblProduct productId;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
     @JoinColumn(name = "shipping_address_id", referencedColumnName = "address_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAddress shippingAddressId;
+    @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private TblContact contactId;
     @JoinColumn(name = "contract_id", referencedColumnName = "contract_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContract contractId;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblInvoice invoiceId;
+    @JoinColumn(name = "unit_type_id", referencedColumnName = "unit_type_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private SubUnitType unitTypeId;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
     @JoinColumn(name = "order_owner_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser orderOwnerId;
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    @ManyToOne
-    private TblProduct productId;
+    @JoinColumn(name = "quote_id", referencedColumnName = "quote_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private TblQuote quoteId;
     @JoinColumn(name = "order_status_id", referencedColumnName = "order_status_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubOrderStatus orderStatusId;
-    @JoinColumn(name = "unit_type_id", referencedColumnName = "unit_type_id")
-    @ManyToOne
-    private SubUnitType unitTypeId;
 
     public TblOrder() {
     }
@@ -179,12 +181,12 @@ public class TblOrder implements Serializable {
         this.recordState = recordState;
     }
 
-    public TblContact getContactId() {
-        return contactId;
+    public TblProduct getProductId() {
+        return productId;
     }
 
-    public void setContactId(TblContact contactId) {
-        this.contactId = contactId;
+    public void setProductId(TblProduct productId) {
+        this.productId = productId;
     }
 
     public TblAccount getAccountId() {
@@ -201,6 +203,14 @@ public class TblOrder implements Serializable {
 
     public void setShippingAddressId(TblAddress shippingAddressId) {
         this.shippingAddressId = shippingAddressId;
+    }
+
+    public TblContact getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(TblContact contactId) {
+        this.contactId = contactId;
     }
 
     public TblContract getContractId() {
@@ -227,6 +237,14 @@ public class TblOrder implements Serializable {
         this.invoiceId = invoiceId;
     }
 
+    public SubUnitType getUnitTypeId() {
+        return unitTypeId;
+    }
+
+    public void setUnitTypeId(SubUnitType unitTypeId) {
+        this.unitTypeId = unitTypeId;
+    }
+
     public SysUser getModifiedBy() {
         return modifiedBy;
     }
@@ -243,12 +261,12 @@ public class TblOrder implements Serializable {
         this.orderOwnerId = orderOwnerId;
     }
 
-    public TblProduct getProductId() {
-        return productId;
+    public TblQuote getQuoteId() {
+        return quoteId;
     }
 
-    public void setProductId(TblProduct productId) {
-        this.productId = productId;
+    public void setQuoteId(TblQuote quoteId) {
+        this.quoteId = quoteId;
     }
 
     public SubOrderStatus getOrderStatusId() {
@@ -257,14 +275,6 @@ public class TblOrder implements Serializable {
 
     public void setOrderStatusId(SubOrderStatus orderStatusId) {
         this.orderStatusId = orderStatusId;
-    }
-
-    public SubUnitType getUnitTypeId() {
-        return unitTypeId;
-    }
-
-    public void setUnitTypeId(SubUnitType unitTypeId) {
-        this.unitTypeId = unitTypeId;
     }
 
     @Override

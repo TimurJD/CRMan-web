@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,16 +15,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sys_roles")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SysRole.findAll", query = "SELECT s FROM SysRole s")})
 public class SysRole implements Serializable {
@@ -40,7 +38,7 @@ public class SysRole implements Serializable {
     @Size(max = 16777215)
     @Column(name = "role_description")
     private String roleDescription;
-    @OneToMany(mappedBy = "roleId")
+    @OneToMany(mappedBy = "roleId", fetch = FetchType.EAGER)
     private Set<SysPermission> sysPermissionSet;
 
     public SysRole() {
@@ -74,7 +72,6 @@ public class SysRole implements Serializable {
         this.roleDescription = roleDescription;
     }
 
-    @XmlTransient
     public Set<SysPermission> getSysPermissionSet() {
         return sysPermissionSet;
     }

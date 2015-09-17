@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,16 +16,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_countries")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubCountry.findAll", query = "SELECT s FROM SubCountry s")})
 public class SubCountry implements Serializable {
@@ -43,12 +41,12 @@ public class SubCountry implements Serializable {
     @Size(max = 5)
     @Column(name = "locale_code")
     private String localeCode;
-    @OneToMany(mappedBy = "countryId")
+    @OneToMany(mappedBy = "countryId", fetch = FetchType.EAGER)
     private Set<SubRegion> subRegionSet;
     @JoinColumn(name = "default_currency_id", referencedColumnName = "currency_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubCurrency defaultCurrencyId;
-    @OneToMany(mappedBy = "countryId")
+    @OneToMany(mappedBy = "countryId", fetch = FetchType.EAGER)
     private Set<TblProduct> tblProductSet;
 
     public SubCountry() {
@@ -90,7 +88,6 @@ public class SubCountry implements Serializable {
         this.localeCode = localeCode;
     }
 
-    @XmlTransient
     public Set<SubRegion> getSubRegionSet() {
         return subRegionSet;
     }
@@ -107,7 +104,6 @@ public class SubCountry implements Serializable {
         this.defaultCurrencyId = defaultCurrencyId;
     }
 
-    @XmlTransient
     public Set<TblProduct> getTblProductSet() {
         return tblProductSet;
     }

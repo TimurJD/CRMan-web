@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,16 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_lead_sources")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubLeadSource.findAll", query = "SELECT s FROM SubLeadSource s")})
 public class SubLeadSource implements Serializable {
@@ -37,7 +35,7 @@ public class SubLeadSource implements Serializable {
     @Size(max = 500)
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "leadSourceId")
+    @OneToMany(mappedBy = "leadSourceId", fetch = FetchType.EAGER)
     private Set<TblLead> tblLeadSet;
 
     public SubLeadSource() {
@@ -71,7 +69,6 @@ public class SubLeadSource implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
     public Set<TblLead> getTblLeadSet() {
         return tblLeadSet;
     }

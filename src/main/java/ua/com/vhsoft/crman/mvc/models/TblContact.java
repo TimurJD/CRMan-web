@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +20,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_contacts")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblContact.findAll", query = "SELECT t FROM TblContact t")})
 public class TblContact implements Serializable {
@@ -62,35 +60,37 @@ public class TblContact implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "contactId")
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "contactId")
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
     private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "contactId")
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
     private Set<TblAddress> tblAddressSet;
-    @OneToMany(mappedBy = "relContactId")
+    @OneToMany(mappedBy = "relContactId", fetch = FetchType.EAGER)
     private Set<TblActivity> tblActivitySet;
-    @OneToMany(mappedBy = "contactId")
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
     private Set<TblContract> tblContractSet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
     @JoinColumn(name = "position_id", referencedColumnName = "position_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysPosition positionId;
     @JoinColumn(name = "relation_type_id", referencedColumnName = "relation_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubRelationType relationTypeId;
     @JoinColumn(name = "sex_id", referencedColumnName = "sex_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubSex sexId;
-    @OneToMany(mappedBy = "contactId")
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
+    private Set<TblQuote> tblQuoteSet;
+    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
     private Set<TblOpportunity> tblOpportunitySet;
 
     public TblContact() {
@@ -172,7 +172,6 @@ public class TblContact implements Serializable {
         this.recordState = recordState;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }
@@ -181,7 +180,6 @@ public class TblContact implements Serializable {
         this.tblOrderSet = tblOrderSet;
     }
 
-    @XmlTransient
     public Set<TblCommunication> getTblCommunicationSet() {
         return tblCommunicationSet;
     }
@@ -190,7 +188,6 @@ public class TblContact implements Serializable {
         this.tblCommunicationSet = tblCommunicationSet;
     }
 
-    @XmlTransient
     public Set<TblAddress> getTblAddressSet() {
         return tblAddressSet;
     }
@@ -199,7 +196,6 @@ public class TblContact implements Serializable {
         this.tblAddressSet = tblAddressSet;
     }
 
-    @XmlTransient
     public Set<TblActivity> getTblActivitySet() {
         return tblActivitySet;
     }
@@ -208,7 +204,6 @@ public class TblContact implements Serializable {
         this.tblActivitySet = tblActivitySet;
     }
 
-    @XmlTransient
     public Set<TblContract> getTblContractSet() {
         return tblContractSet;
     }
@@ -265,7 +260,14 @@ public class TblContact implements Serializable {
         this.sexId = sexId;
     }
 
-    @XmlTransient
+    public Set<TblQuote> getTblQuoteSet() {
+        return tblQuoteSet;
+    }
+
+    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
+        this.tblQuoteSet = tblQuoteSet;
+    }
+
     public Set<TblOpportunity> getTblOpportunitySet() {
         return tblOpportunitySet;
     }

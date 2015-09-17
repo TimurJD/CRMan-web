@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,16 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_order_statuses")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubOrderStatus.findAll", query = "SELECT s FROM SubOrderStatus s")})
 public class SubOrderStatus implements Serializable {
@@ -34,7 +32,7 @@ public class SubOrderStatus implements Serializable {
     @Size(max = 45)
     @Column(name = "status")
     private String status;
-    @OneToMany(mappedBy = "orderStatusId")
+    @OneToMany(mappedBy = "orderStatusId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
 
     public SubOrderStatus() {
@@ -60,7 +58,6 @@ public class SubOrderStatus implements Serializable {
         this.status = status;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }

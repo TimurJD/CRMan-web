@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,15 +18,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_communications")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblCommunication.findAll", query = "SELECT t FROM TblCommunication t")})
 public class TblCommunication implements Serializable {
@@ -53,22 +52,22 @@ public class TblCommunication implements Serializable {
     @Column(name = "record_state")
     private Boolean recordState;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
     @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContact contactId;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "lead_id", referencedColumnName = "lead_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblLead leadId;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
     @JoinColumn(name = "communication_type_id", referencedColumnName = "communication_type_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private SubCommunicationType communicationTypeId;
 
     public TblCommunication() {

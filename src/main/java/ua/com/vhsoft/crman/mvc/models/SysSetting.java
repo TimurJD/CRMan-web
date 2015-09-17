@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,15 +14,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sys_settings")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SysSetting.findAll", query = "SELECT s FROM SysSetting s")})
 public class SysSetting implements Serializable {
@@ -35,10 +34,10 @@ public class SysSetting implements Serializable {
     @Column(name = "value")
     private String value;
     @JoinColumn(name = "setting_type_id", referencedColumnName = "setting_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysSettingType settingTypeId;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser userId;
 
     public SysSetting() {

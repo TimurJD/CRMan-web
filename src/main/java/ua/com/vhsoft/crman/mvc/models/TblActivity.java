@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,15 +19,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_activities")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblActivity.findAll", query = "SELECT t FROM TblActivity t")})
 public class TblActivity implements Serializable {
@@ -65,31 +64,31 @@ public class TblActivity implements Serializable {
     @Column(name = "record_state")
     private Boolean recordState;
     @JoinColumn(name = "result_id", referencedColumnName = "activity_result_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubActivityResult resultId;
     @JoinColumn(name = "rel_account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount relAccountId;
     @JoinColumn(name = "rel_contact_id", referencedColumnName = "contact_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContact relContactId;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "rel_opportunity_id", referencedColumnName = "opportunity_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblOpportunity relOpportunityId;
     @JoinColumn(name = "owner_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser ownerId;
     @JoinColumn(name = "priority_id", referencedColumnName = "priority_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubPriority priorityId;
     @JoinColumn(name = "activity_status_id", referencedColumnName = "activity_status_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubActivityStatus activityStatusId;
     @JoinColumn(name = "activity_type_id", referencedColumnName = "activity_type_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private SubActivityType activityTypeId;
 
     public TblActivity() {

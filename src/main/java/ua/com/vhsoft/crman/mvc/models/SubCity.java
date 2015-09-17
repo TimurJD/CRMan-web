@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,16 +15,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_cities")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubCity.findAll", query = "SELECT s FROM SubCity s")})
 public class SubCity implements Serializable {
@@ -33,10 +31,10 @@ public class SubCity implements Serializable {
     @Basic(optional = false)
     @Column(name = "city_id")
     private Integer cityId;
-    @OneToMany(mappedBy = "cityId")
+    @OneToMany(mappedBy = "cityId", fetch = FetchType.EAGER)
     private Set<TblAddress> tblAddressSet;
     @JoinColumn(name = "region_id", referencedColumnName = "region_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubRegion regionId;
 
     public SubCity() {
@@ -54,7 +52,6 @@ public class SubCity implements Serializable {
         this.cityId = cityId;
     }
 
-    @XmlTransient
     public Set<TblAddress> getTblAddressSet() {
         return tblAddressSet;
     }

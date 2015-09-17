@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +20,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_opportunities")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblOpportunity.findAll", query = "SELECT t FROM TblOpportunity t")})
 public class TblOpportunity implements Serializable {
@@ -54,22 +52,22 @@ public class TblOpportunity implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "relOpportunityId")
+    @OneToMany(mappedBy = "relOpportunityId", fetch = FetchType.EAGER)
     private Set<TblActivity> tblActivitySet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
     @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContact contactId;
     @JoinColumn(name = "revenue_currency_id", referencedColumnName = "currency_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubCurrency revenueCurrencyId;
     @JoinColumn(name = "owner_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser ownerId;
     @JoinColumn(name = "status_id", referencedColumnName = "opportunity_status_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubOpportunityStatus statusId;
 
     public TblOpportunity() {
@@ -135,7 +133,6 @@ public class TblOpportunity implements Serializable {
         this.recordState = recordState;
     }
 
-    @XmlTransient
     public Set<TblActivity> getTblActivitySet() {
         return tblActivitySet;
     }

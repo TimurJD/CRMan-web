@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,15 +18,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sys_logs")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SysLog.findAll", query = "SELECT s FROM SysLog s")})
 public class SysLog implements Serializable {
@@ -51,7 +50,7 @@ public class SysLog implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date messageDate;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private SysUser userId;
 
     public SysLog() {

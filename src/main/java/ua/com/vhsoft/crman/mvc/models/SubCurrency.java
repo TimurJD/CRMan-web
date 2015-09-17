@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -12,16 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_currencies")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubCurrency.findAll", query = "SELECT s FROM SubCurrency s")})
 public class SubCurrency implements Serializable {
@@ -41,11 +39,11 @@ public class SubCurrency implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "currency_name")
     private String currencyName;
-    @OneToMany(mappedBy = "defaultCurrencyId")
+    @OneToMany(mappedBy = "defaultCurrencyId", fetch = FetchType.EAGER)
     private Set<SubCountry> subCountrySet;
-    @OneToMany(mappedBy = "currencyId")
+    @OneToMany(mappedBy = "currencyId", fetch = FetchType.EAGER)
     private Set<TblProduct> tblProductSet;
-    @OneToMany(mappedBy = "revenueCurrencyId")
+    @OneToMany(mappedBy = "revenueCurrencyId", fetch = FetchType.EAGER)
     private Set<TblOpportunity> tblOpportunitySet;
 
     public SubCurrency() {
@@ -85,7 +83,6 @@ public class SubCurrency implements Serializable {
         this.currencyName = currencyName;
     }
 
-    @XmlTransient
     public Set<SubCountry> getSubCountrySet() {
         return subCountrySet;
     }
@@ -94,7 +91,6 @@ public class SubCurrency implements Serializable {
         this.subCountrySet = subCountrySet;
     }
 
-    @XmlTransient
     public Set<TblProduct> getTblProductSet() {
         return tblProductSet;
     }
@@ -103,7 +99,6 @@ public class SubCurrency implements Serializable {
         this.tblProductSet = tblProductSet;
     }
 
-    @XmlTransient
     public Set<TblOpportunity> getTblOpportunitySet() {
         return tblOpportunitySet;
     }

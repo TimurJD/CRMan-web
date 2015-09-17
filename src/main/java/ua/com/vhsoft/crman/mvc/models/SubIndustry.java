@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,16 +14,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_industries")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubIndustry.findAll", query = "SELECT s FROM SubIndustry s")})
 public class SubIndustry implements Serializable {
@@ -35,9 +33,9 @@ public class SubIndustry implements Serializable {
     @Size(max = 45)
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "industryId")
+    @OneToMany(mappedBy = "industryId", fetch = FetchType.EAGER)
     private Set<TblLead> tblLeadSet;
-    @OneToMany(mappedBy = "industryId")
+    @OneToMany(mappedBy = "industryId", fetch = FetchType.EAGER)
     private Set<TblAccount> tblAccountSet;
 
     public SubIndustry() {
@@ -63,7 +61,6 @@ public class SubIndustry implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
     public Set<TblLead> getTblLeadSet() {
         return tblLeadSet;
     }
@@ -72,7 +69,6 @@ public class SubIndustry implements Serializable {
         this.tblLeadSet = tblLeadSet;
     }
 
-    @XmlTransient
     public Set<TblAccount> getTblAccountSet() {
         return tblAccountSet;
     }

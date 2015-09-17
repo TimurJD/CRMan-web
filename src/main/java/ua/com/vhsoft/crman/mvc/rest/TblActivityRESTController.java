@@ -2,11 +2,11 @@ package ua.com.vhsoft.crman.mvc.rest;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import ua.com.vhsoft.crman.data.manipulators.TblActivityManipulator;
 import ua.com.vhsoft.crman.mvc.models.TblActivity;
 
@@ -14,7 +14,7 @@ import ua.com.vhsoft.crman.mvc.models.TblActivity;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-@Controller
+@RestController
 @RequestMapping("/api/activities")
 public class TblActivityRESTController implements AbstractRESTController<TblActivity> {
 

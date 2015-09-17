@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,16 +19,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_accounts")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblAccount.findAll", query = "SELECT t FROM TblAccount t")})
 public class TblAccount implements Serializable {
@@ -56,39 +54,41 @@ public class TblAccount implements Serializable {
     @Column(name = "record_state")
     private Boolean recordState;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "industry_id", referencedColumnName = "industry_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubIndustry industryId;
     @JoinColumn(name = "legal_form_id", referencedColumnName = "legal_form_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubLegalForm legalFormId;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
-    @OneToMany(mappedBy = "parentAccount")
+    @OneToMany(mappedBy = "parentAccount", fetch = FetchType.EAGER)
     private Set<TblAccount> tblAccountSet;
     @JoinColumn(name = "parent_account", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount parentAccount;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblAddress> tblAddressSet;
-    @OneToMany(mappedBy = "relAccountId")
+    @OneToMany(mappedBy = "relAccountId", fetch = FetchType.EAGER)
     private Set<TblActivity> tblActivitySet;
-    @OneToMany(mappedBy = "producerId")
+    @OneToMany(mappedBy = "producerId", fetch = FetchType.EAGER)
     private Set<TblProduct> tblProductSet;
-    @OneToMany(mappedBy = "vendorId")
+    @OneToMany(mappedBy = "vendorId", fetch = FetchType.EAGER)
     private Set<TblProduct> tblProductSet1;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblContract> tblContractSet;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblContact> tblContactSet;
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
+    private Set<TblQuote> tblQuoteSet;
+    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
     private Set<TblOpportunity> tblOpportunitySet;
 
     public TblAccount() {
@@ -194,7 +194,6 @@ public class TblAccount implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    @XmlTransient
     public Set<TblAccount> getTblAccountSet() {
         return tblAccountSet;
     }
@@ -211,7 +210,6 @@ public class TblAccount implements Serializable {
         this.parentAccount = parentAccount;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }
@@ -220,7 +218,6 @@ public class TblAccount implements Serializable {
         this.tblOrderSet = tblOrderSet;
     }
 
-    @XmlTransient
     public Set<TblCommunication> getTblCommunicationSet() {
         return tblCommunicationSet;
     }
@@ -229,7 +226,6 @@ public class TblAccount implements Serializable {
         this.tblCommunicationSet = tblCommunicationSet;
     }
 
-    @XmlTransient
     public Set<TblAddress> getTblAddressSet() {
         return tblAddressSet;
     }
@@ -238,7 +234,6 @@ public class TblAccount implements Serializable {
         this.tblAddressSet = tblAddressSet;
     }
 
-    @XmlTransient
     public Set<TblActivity> getTblActivitySet() {
         return tblActivitySet;
     }
@@ -247,7 +242,6 @@ public class TblAccount implements Serializable {
         this.tblActivitySet = tblActivitySet;
     }
 
-    @XmlTransient
     public Set<TblProduct> getTblProductSet() {
         return tblProductSet;
     }
@@ -256,7 +250,6 @@ public class TblAccount implements Serializable {
         this.tblProductSet = tblProductSet;
     }
 
-    @XmlTransient
     public Set<TblProduct> getTblProductSet1() {
         return tblProductSet1;
     }
@@ -265,7 +258,6 @@ public class TblAccount implements Serializable {
         this.tblProductSet1 = tblProductSet1;
     }
 
-    @XmlTransient
     public Set<TblContract> getTblContractSet() {
         return tblContractSet;
     }
@@ -274,7 +266,6 @@ public class TblAccount implements Serializable {
         this.tblContractSet = tblContractSet;
     }
 
-    @XmlTransient
     public Set<TblContact> getTblContactSet() {
         return tblContactSet;
     }
@@ -283,7 +274,14 @@ public class TblAccount implements Serializable {
         this.tblContactSet = tblContactSet;
     }
 
-    @XmlTransient
+    public Set<TblQuote> getTblQuoteSet() {
+        return tblQuoteSet;
+    }
+
+    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
+        this.tblQuoteSet = tblQuoteSet;
+    }
+
     public Set<TblOpportunity> getTblOpportunitySet() {
         return tblOpportunitySet;
     }

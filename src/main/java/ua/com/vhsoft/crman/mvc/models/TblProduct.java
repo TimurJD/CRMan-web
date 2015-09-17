@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,16 +16,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_products")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblProduct.findAll", query = "SELECT t FROM TblProduct t")})
 public class TblProduct implements Serializable {
@@ -48,28 +46,30 @@ public class TblProduct implements Serializable {
     private Long price;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
     private Set<SubContractProduct> subContractProductSet;
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubCountry countryId;
     @JoinColumn(name = "currency_id", referencedColumnName = "currency_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubCurrency currencyId;
     @JoinColumn(name = "producer_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount producerId;
     @JoinColumn(name = "product_type_id", referencedColumnName = "product_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubProductType productTypeId;
     @JoinColumn(name = "unit_type_id", referencedColumnName = "unit_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubUnitType unitTypeId;
     @JoinColumn(name = "vendor_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount vendorId;
+    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
+    private Set<TblQuote> tblQuoteSet;
 
     public TblProduct() {
     }
@@ -134,7 +134,6 @@ public class TblProduct implements Serializable {
         this.recordState = recordState;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }
@@ -143,7 +142,6 @@ public class TblProduct implements Serializable {
         this.tblOrderSet = tblOrderSet;
     }
 
-    @XmlTransient
     public Set<SubContractProduct> getSubContractProductSet() {
         return subContractProductSet;
     }
@@ -198,6 +196,14 @@ public class TblProduct implements Serializable {
 
     public void setVendorId(TblAccount vendorId) {
         this.vendorId = vendorId;
+    }
+
+    public Set<TblQuote> getTblQuoteSet() {
+        return tblQuoteSet;
+    }
+
+    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
+        this.tblQuoteSet = tblQuoteSet;
     }
 
     @Override

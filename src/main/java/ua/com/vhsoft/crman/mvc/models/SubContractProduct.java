@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,15 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sub_contract_product")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubContractProduct.findAll", query = "SELECT s FROM SubContractProduct s")})
 public class SubContractProduct implements Serializable {
@@ -35,13 +34,13 @@ public class SubContractProduct implements Serializable {
     @Column(name = "unit_price")
     private Long unitPrice;
     @JoinColumn(name = "contract_id", referencedColumnName = "contract_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContract contractId;
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblProduct productId;
     @JoinColumn(name = "unit_type_id", referencedColumnName = "unit_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubUnitType unitTypeId;
 
     public SubContractProduct() {

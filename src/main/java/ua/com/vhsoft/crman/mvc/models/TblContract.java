@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +20,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_contracts")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblContract.findAll", query = "SELECT t FROM TblContract t")})
 public class TblContract implements Serializable {
@@ -62,26 +60,26 @@ public class TblContract implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "contractId")
+    @OneToMany(mappedBy = "contractId", fetch = FetchType.EAGER)
     private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "contractId")
+    @OneToMany(mappedBy = "contractId", fetch = FetchType.EAGER)
     private Set<SubContractProduct> subContractProductSet;
-    @OneToMany(mappedBy = "contractId")
+    @OneToMany(mappedBy = "contractId", fetch = FetchType.EAGER)
     private Set<TblInvoice> tblInvoiceSet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
     @JoinColumn(name = "contact_id", referencedColumnName = "contact_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private TblContact contactId;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
     @JoinColumn(name = "contract_owner_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser contractOwnerId;
 
     public TblContract() {
@@ -163,7 +161,6 @@ public class TblContract implements Serializable {
         this.recordState = recordState;
     }
 
-    @XmlTransient
     public Set<TblOrder> getTblOrderSet() {
         return tblOrderSet;
     }
@@ -172,7 +169,6 @@ public class TblContract implements Serializable {
         this.tblOrderSet = tblOrderSet;
     }
 
-    @XmlTransient
     public Set<SubContractProduct> getSubContractProductSet() {
         return subContractProductSet;
     }
@@ -181,7 +177,6 @@ public class TblContract implements Serializable {
         this.subContractProductSet = subContractProductSet;
     }
 
-    @XmlTransient
     public Set<TblInvoice> getTblInvoiceSet() {
         return tblInvoiceSet;
     }

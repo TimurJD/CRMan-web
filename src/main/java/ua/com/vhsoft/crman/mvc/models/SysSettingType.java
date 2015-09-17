@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,16 +14,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "sys_setting_types")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SysSettingType.findAll", query = "SELECT s FROM SysSettingType s")})
 public class SysSettingType implements Serializable {
@@ -38,7 +36,7 @@ public class SysSettingType implements Serializable {
     @Size(max = 300)
     @Column(name = "type_description")
     private String typeDescription;
-    @OneToMany(mappedBy = "settingTypeId")
+    @OneToMany(mappedBy = "settingTypeId", fetch = FetchType.EAGER)
     private Set<SysSetting> sysSettingSet;
 
     public SysSettingType() {
@@ -72,7 +70,6 @@ public class SysSettingType implements Serializable {
         this.typeDescription = typeDescription;
     }
 
-    @XmlTransient
     public Set<SysSetting> getSysSettingSet() {
         return sysSettingSet;
     }

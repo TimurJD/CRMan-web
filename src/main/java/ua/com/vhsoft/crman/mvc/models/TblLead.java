@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +20,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VH
+ * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
 @Entity
 @Table(name = "tbl_leads")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TblLead.findAll", query = "SELECT t FROM TblLead t")})
 public class TblLead implements Serializable {
@@ -69,29 +67,29 @@ public class TblLead implements Serializable {
     @Column(name = "record_state")
     private Boolean recordState;
     @JoinColumn(name = "created_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser createdBy;
     @JoinColumn(name = "industry_id", referencedColumnName = "industry_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubIndustry industryId;
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
     @JoinColumn(name = "lead_owner_id", referencedColumnName = "user_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SysUser leadOwnerId;
     @JoinColumn(name = "relation_type_id", referencedColumnName = "relation_type_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubRelationType relationTypeId;
     @JoinColumn(name = "sex_id", referencedColumnName = "sex_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubSex sexId;
     @JoinColumn(name = "lead_source_id", referencedColumnName = "lead_source_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SubLeadSource leadSourceId;
-    @OneToMany(mappedBy = "leadId")
+    @OneToMany(mappedBy = "leadId", fetch = FetchType.EAGER)
     private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "leadId")
+    @OneToMany(mappedBy = "leadId", fetch = FetchType.EAGER)
     private Set<TblAddress> tblAddressSet;
 
     public TblLead() {
@@ -253,7 +251,6 @@ public class TblLead implements Serializable {
         this.leadSourceId = leadSourceId;
     }
 
-    @XmlTransient
     public Set<TblCommunication> getTblCommunicationSet() {
         return tblCommunicationSet;
     }
@@ -262,7 +259,6 @@ public class TblLead implements Serializable {
         this.tblCommunicationSet = tblCommunicationSet;
     }
 
-    @XmlTransient
     public Set<TblAddress> getTblAddressSet() {
         return tblAddressSet;
     }
