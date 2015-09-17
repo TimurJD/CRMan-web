@@ -39,15 +39,23 @@ public class CRManSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         System.out.println("SECURITY CHECK");
-        http.authorizeRequests().antMatchers("/activities**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/register**").permitAll()
-                .and().formLogin().defaultSuccessUrl("/index")
+        http.authorizeRequests()
+                .antMatchers("/activities**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                //TODO add more rules later
+                .and().formLogin()
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/j_spring_security_check")
+                .defaultSuccessUrl("/activities")
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
-                .and().exceptionHandling().accessDeniedPage("/error403");
+                .failureUrl("/login?status=error")
+                .and().logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/login?status=logout")
+                .and().exceptionHandling().accessDeniedPage("/error403")
+                .and().csrf().disable();
 
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         PasswordEncoder encoder = new Cryptographer();
