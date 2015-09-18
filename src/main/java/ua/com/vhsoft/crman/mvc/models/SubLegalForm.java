@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -24,6 +21,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "SubLegalForm.findAll", query = "SELECT s FROM SubLegalForm s")})
 public class SubLegalForm implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +31,6 @@ public class SubLegalForm implements Serializable {
     @Size(max = 100)
     @Column(name = "legal_form")
     private String legalForm;
-    @OneToMany(mappedBy = "legalFormId", fetch = FetchType.EAGER)
-    private Set<TblAccount> tblAccountSet;
 
     public SubLegalForm() {
     }
@@ -57,14 +53,6 @@ public class SubLegalForm implements Serializable {
 
     public void setLegalForm(String legalForm) {
         this.legalForm = legalForm;
-    }
-
-    public Set<TblAccount> getTblAccountSet() {
-        return tblAccountSet;
-    }
-
-    public void setTblAccountSet(Set<TblAccount> tblAccountSet) {
-        this.tblAccountSet = tblAccountSet;
     }
 
     @Override
@@ -91,5 +79,5 @@ public class SubLegalForm implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SubLegalForm[ legalFormId=" + legalFormId + " ]";
     }
-    
+
 }

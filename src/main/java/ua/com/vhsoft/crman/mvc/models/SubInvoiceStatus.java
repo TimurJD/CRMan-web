@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -24,6 +21,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "SubInvoiceStatus.findAll", query = "SELECT s FROM SubInvoiceStatus s")})
 public class SubInvoiceStatus implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +31,6 @@ public class SubInvoiceStatus implements Serializable {
     @Size(max = 45)
     @Column(name = "status")
     private String status;
-    @OneToMany(mappedBy = "statusId", fetch = FetchType.EAGER)
-    private Set<TblInvoice> tblInvoiceSet;
 
     public SubInvoiceStatus() {
     }
@@ -57,14 +53,6 @@ public class SubInvoiceStatus implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Set<TblInvoice> getTblInvoiceSet() {
-        return tblInvoiceSet;
-    }
-
-    public void setTblInvoiceSet(Set<TblInvoice> tblInvoiceSet) {
-        this.tblInvoiceSet = tblInvoiceSet;
     }
 
     @Override
@@ -91,5 +79,5 @@ public class SubInvoiceStatus implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SubInvoiceStatus[ invoiceStatusId=" + invoiceStatusId + " ]";
     }
-    
+
 }

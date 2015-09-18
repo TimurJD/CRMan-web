@@ -1,15 +1,12 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,8 +29,7 @@ public class SubActivityResult implements Serializable {
     @Size(max = 60)
     @Column(name = "activity_result")
     private String activityResult;
-    @OneToMany(mappedBy = "resultId", fetch = FetchType.EAGER)
-    private Set<TblActivity> tblActivitySet;
+    
 
     public SubActivityResult() {
     }
@@ -57,15 +53,7 @@ public class SubActivityResult implements Serializable {
     public void setActivityResult(String activityResult) {
         this.activityResult = activityResult;
     }
-
-    public Set<TblActivity> getTblActivitySet() {
-        return tblActivitySet;
-    }
-
-    public void setTblActivitySet(Set<TblActivity> tblActivitySet) {
-        this.tblActivitySet = tblActivitySet;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

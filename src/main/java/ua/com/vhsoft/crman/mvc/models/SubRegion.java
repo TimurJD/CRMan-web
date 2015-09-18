@@ -1,7 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,9 +39,7 @@ public class SubRegion implements Serializable {
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubCountry countryId;
-    @OneToMany(mappedBy = "regionId", fetch = FetchType.EAGER)
-    private Set<SubCity> subCitySet;
-
+    
     public SubRegion() {
     }
 
@@ -78,14 +74,6 @@ public class SubRegion implements Serializable {
 
     public void setCountryId(SubCountry countryId) {
         this.countryId = countryId;
-    }
-
-    public Set<SubCity> getSubCitySet() {
-        return subCitySet;
-    }
-
-    public void setSubCitySet(Set<SubCity> subCitySet) {
-        this.subCitySet = subCitySet;
     }
 
     @Override

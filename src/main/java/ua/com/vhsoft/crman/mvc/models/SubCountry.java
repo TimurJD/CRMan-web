@@ -1,7 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -41,13 +39,10 @@ public class SubCountry implements Serializable {
     @Size(max = 5)
     @Column(name = "locale_code")
     private String localeCode;
-    @OneToMany(mappedBy = "countryId", fetch = FetchType.EAGER)
-    private Set<SubRegion> subRegionSet;
     @JoinColumn(name = "default_currency_id", referencedColumnName = "currency_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubCurrency defaultCurrencyId;
-    @OneToMany(mappedBy = "countryId", fetch = FetchType.EAGER)
-    private Set<TblProduct> tblProductSet;
+    
 
     public SubCountry() {
     }
@@ -88,14 +83,7 @@ public class SubCountry implements Serializable {
         this.localeCode = localeCode;
     }
 
-    public Set<SubRegion> getSubRegionSet() {
-        return subRegionSet;
-    }
-
-    public void setSubRegionSet(Set<SubRegion> subRegionSet) {
-        this.subRegionSet = subRegionSet;
-    }
-
+    
     public SubCurrency getDefaultCurrencyId() {
         return defaultCurrencyId;
     }
@@ -104,14 +92,7 @@ public class SubCountry implements Serializable {
         this.defaultCurrencyId = defaultCurrencyId;
     }
 
-    public Set<TblProduct> getTblProductSet() {
-        return tblProductSet;
-    }
-
-    public void setTblProductSet(Set<TblProduct> tblProductSet) {
-        this.tblProductSet = tblProductSet;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

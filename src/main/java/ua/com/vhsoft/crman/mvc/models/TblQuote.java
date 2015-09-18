@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -59,8 +57,6 @@ public class TblQuote implements Serializable {
     private Date createdOn;
     @Column(name = "record_state")
     private Integer recordState;
-    @OneToMany(mappedBy = "quoteId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
@@ -157,14 +153,6 @@ public class TblQuote implements Serializable {
 
     public void setRecordState(Integer recordState) {
         this.recordState = recordState;
-    }
-
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
     }
 
     public TblAccount getAccountId() {

@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -52,8 +50,6 @@ public class TblOpportunity implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "relOpportunityId", fetch = FetchType.EAGER)
-    private Set<TblActivity> tblActivitySet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
@@ -131,14 +127,6 @@ public class TblOpportunity implements Serializable {
 
     public void setRecordState(Boolean recordState) {
         this.recordState = recordState;
-    }
-
-    public Set<TblActivity> getTblActivitySet() {
-        return tblActivitySet;
-    }
-
-    public void setTblActivitySet(Set<TblActivity> tblActivitySet) {
-        this.tblActivitySet = tblActivitySet;
     }
 
     public TblAccount getAccountId() {

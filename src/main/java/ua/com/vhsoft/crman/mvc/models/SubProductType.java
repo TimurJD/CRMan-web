@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,8 +30,6 @@ public class SubProductType implements Serializable {
     @Size(max = 45)
     @Column(name = "product_type")
     private String productType;
-    @OneToMany(mappedBy = "productTypeId", fetch = FetchType.EAGER)
-    private Set<TblProduct> tblProductSet;
 
     public SubProductType() {
     }
@@ -57,14 +52,6 @@ public class SubProductType implements Serializable {
 
     public void setProductType(String productType) {
         this.productType = productType;
-    }
-
-    public Set<TblProduct> getTblProductSet() {
-        return tblProductSet;
-    }
-
-    public void setTblProductSet(Set<TblProduct> tblProductSet) {
-        this.tblProductSet = tblProductSet;
     }
 
     @Override

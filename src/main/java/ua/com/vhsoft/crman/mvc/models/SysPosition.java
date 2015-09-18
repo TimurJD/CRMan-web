@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,6 +22,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "SysPosition.findAll", query = "SELECT s FROM SysPosition s")})
 public class SysPosition implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +37,6 @@ public class SysPosition implements Serializable {
     @Size(max = 300)
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "positionId", fetch = FetchType.EAGER)
-    private Set<SysUser> sysUserSet;
-    @OneToMany(mappedBy = "positionId", fetch = FetchType.EAGER)
-    private Set<TblContact> tblContactSet;
 
     public SysPosition() {
     }
@@ -80,22 +74,6 @@ public class SysPosition implements Serializable {
         this.description = description;
     }
 
-    public Set<SysUser> getSysUserSet() {
-        return sysUserSet;
-    }
-
-    public void setSysUserSet(Set<SysUser> sysUserSet) {
-        this.sysUserSet = sysUserSet;
-    }
-
-    public Set<TblContact> getTblContactSet() {
-        return tblContactSet;
-    }
-
-    public void setTblContactSet(Set<TblContact> tblContactSet) {
-        this.tblContactSet = tblContactSet;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -120,5 +98,5 @@ public class SysPosition implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SysPosition[ positionId=" + positionId + " ]";
     }
-    
+        
 }

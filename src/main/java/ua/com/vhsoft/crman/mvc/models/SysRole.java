@@ -1,7 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -25,6 +25,9 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "SysRole.findAll", query = "SELECT s FROM SysRole s")})
 public class SysRole implements Serializable {
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private SysUser userId;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +41,7 @@ public class SysRole implements Serializable {
     @Size(max = 16777215)
     @Column(name = "role_description")
     private String roleDescription;
-    @OneToMany(mappedBy = "roleId", fetch = FetchType.EAGER)
-    private Set<SysPermission> sysPermissionSet;
+    
 
     public SysRole() {
     }
@@ -72,14 +74,7 @@ public class SysRole implements Serializable {
         this.roleDescription = roleDescription;
     }
 
-    public Set<SysPermission> getSysPermissionSet() {
-        return sysPermissionSet;
-    }
-
-    public void setSysPermissionSet(Set<SysPermission> sysPermissionSet) {
-        this.sysPermissionSet = sysPermissionSet;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,6 +98,14 @@ public class SysRole implements Serializable {
     @Override
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SysRole[ roleId=" + roleId + " ]";
+    }
+
+    public SysUser getUserId() {
+        return userId;
+    }
+
+    public void setUserId(SysUser userId) {
+        this.userId = userId;
     }
     
 }

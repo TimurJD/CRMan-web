@@ -1,15 +1,12 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,8 +29,7 @@ public class SubOrderStatus implements Serializable {
     @Size(max = 45)
     @Column(name = "status")
     private String status;
-    @OneToMany(mappedBy = "orderStatusId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
+    
 
     public SubOrderStatus() {
     }
@@ -57,15 +53,7 @@ public class SubOrderStatus implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
