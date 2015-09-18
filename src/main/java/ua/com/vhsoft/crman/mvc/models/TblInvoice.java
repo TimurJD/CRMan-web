@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -64,8 +62,6 @@ public class TblInvoice implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "invoiceId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
     @JoinColumn(name = "contract_id", referencedColumnName = "contract_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblContract contractId;
@@ -164,14 +160,6 @@ public class TblInvoice implements Serializable {
 
     public void setRecordState(Boolean recordState) {
         this.recordState = recordState;
-    }
-
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
     }
 
     public TblContract getContractId() {

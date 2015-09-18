@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,9 +30,7 @@ public class SubQuoteStage implements Serializable {
     @Size(max = 45)
     @Column(name = "quote_stage")
     private String quoteStage;
-    @OneToMany(mappedBy = "quoteStageId", fetch = FetchType.EAGER)
-    private Set<TblQuote> tblQuoteSet;
-
+    
     public SubQuoteStage() {
     }
 
@@ -58,15 +53,7 @@ public class SubQuoteStage implements Serializable {
     public void setQuoteStage(String quoteStage) {
         this.quoteStage = quoteStage;
     }
-
-    public Set<TblQuote> getTblQuoteSet() {
-        return tblQuoteSet;
-    }
-
-    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
-        this.tblQuoteSet = tblQuoteSet;
-    }
-
+   
     @Override
     public int hashCode() {
         int hash = 0;

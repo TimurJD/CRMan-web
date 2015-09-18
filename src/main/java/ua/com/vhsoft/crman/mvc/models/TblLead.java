@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -87,11 +85,7 @@ public class TblLead implements Serializable {
     @JoinColumn(name = "lead_source_id", referencedColumnName = "lead_source_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubLeadSource leadSourceId;
-    @OneToMany(mappedBy = "leadId", fetch = FetchType.EAGER)
-    private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "leadId", fetch = FetchType.EAGER)
-    private Set<TblAddress> tblAddressSet;
-
+    
     public TblLead() {
     }
 
@@ -249,22 +243,6 @@ public class TblLead implements Serializable {
 
     public void setLeadSourceId(SubLeadSource leadSourceId) {
         this.leadSourceId = leadSourceId;
-    }
-
-    public Set<TblCommunication> getTblCommunicationSet() {
-        return tblCommunicationSet;
-    }
-
-    public void setTblCommunicationSet(Set<TblCommunication> tblCommunicationSet) {
-        this.tblCommunicationSet = tblCommunicationSet;
-    }
-
-    public Set<TblAddress> getTblAddressSet() {
-        return tblAddressSet;
-    }
-
-    public void setTblAddressSet(Set<TblAddress> tblAddressSet) {
-        this.tblAddressSet = tblAddressSet;
     }
 
     @Override

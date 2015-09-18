@@ -24,23 +24,20 @@ public class CRManSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println("SECURITY AUTH");
-
         auth.jdbcAuthentication().dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("select sys_users.login, "
                         + "sys_users.password_hash, sys_users.enabled from sys_users where sys_users.login=?")
-                .authoritiesByUsernameQuery("select u.login, x.role_name from sys_users as u inner join\n"
-                        + "(select p.user_id, r.role_name from sys_permissions as p inner join\n"
-                        + "sys_roles as r on r.role_id = p.role_id) as x\n"
-                        + "on x.user_id = u.user_id where login=?;");
+                .authoritiesByUsernameQuery("select u.login, x.role_name from sys_users as u inner join (\n"
+                        + "select * from sys_roles) as x on x.user_id = u.user_id where u.login=?;");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("SECURITY CHECK");
         http.authorizeRequests()
                 .antMatchers("/activities**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/api/**").permitAll()
                 //TODO add more rules later
                 .and().formLogin()
                 .loginPage("/login").permitAll()
@@ -53,7 +50,6 @@ public class CRManSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?status=logout")
                 .and().exceptionHandling().accessDeniedPage("/error403")
                 .and().csrf().disable();
-
     }
 
     @Bean

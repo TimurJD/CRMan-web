@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,9 +30,7 @@ public class SubPriority implements Serializable {
     @Size(max = 45)
     @Column(name = "priority")
     private String priority;
-    @OneToMany(mappedBy = "priorityId", fetch = FetchType.EAGER)
-    private Set<TblActivity> tblActivitySet;
-
+    
     public SubPriority() {
     }
 
@@ -57,14 +52,6 @@ public class SubPriority implements Serializable {
 
     public void setPriority(String priority) {
         this.priority = priority;
-    }
-
-    public Set<TblActivity> getTblActivitySet() {
-        return tblActivitySet;
-    }
-
-    public void setTblActivitySet(Set<TblActivity> tblActivitySet) {
-        this.tblActivitySet = tblActivitySet;
     }
 
     @Override

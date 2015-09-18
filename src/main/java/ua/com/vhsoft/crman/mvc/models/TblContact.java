@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,6 +28,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "TblContact.findAll", query = "SELECT t FROM TblContact t")})
 public class TblContact implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,16 +59,6 @@ public class TblContact implements Serializable {
     private String description;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblAddress> tblAddressSet;
-    @OneToMany(mappedBy = "relContactId", fetch = FetchType.EAGER)
-    private Set<TblActivity> tblActivitySet;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblContract> tblContractSet;
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount accountId;
@@ -88,10 +77,6 @@ public class TblContact implements Serializable {
     @JoinColumn(name = "sex_id", referencedColumnName = "sex_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubSex sexId;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblQuote> tblQuoteSet;
-    @OneToMany(mappedBy = "contactId", fetch = FetchType.EAGER)
-    private Set<TblOpportunity> tblOpportunitySet;
 
     public TblContact() {
     }
@@ -172,46 +157,6 @@ public class TblContact implements Serializable {
         this.recordState = recordState;
     }
 
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
-    }
-
-    public Set<TblCommunication> getTblCommunicationSet() {
-        return tblCommunicationSet;
-    }
-
-    public void setTblCommunicationSet(Set<TblCommunication> tblCommunicationSet) {
-        this.tblCommunicationSet = tblCommunicationSet;
-    }
-
-    public Set<TblAddress> getTblAddressSet() {
-        return tblAddressSet;
-    }
-
-    public void setTblAddressSet(Set<TblAddress> tblAddressSet) {
-        this.tblAddressSet = tblAddressSet;
-    }
-
-    public Set<TblActivity> getTblActivitySet() {
-        return tblActivitySet;
-    }
-
-    public void setTblActivitySet(Set<TblActivity> tblActivitySet) {
-        this.tblActivitySet = tblActivitySet;
-    }
-
-    public Set<TblContract> getTblContractSet() {
-        return tblContractSet;
-    }
-
-    public void setTblContractSet(Set<TblContract> tblContractSet) {
-        this.tblContractSet = tblContractSet;
-    }
-
     public TblAccount getAccountId() {
         return accountId;
     }
@@ -260,22 +205,6 @@ public class TblContact implements Serializable {
         this.sexId = sexId;
     }
 
-    public Set<TblQuote> getTblQuoteSet() {
-        return tblQuoteSet;
-    }
-
-    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
-        this.tblQuoteSet = tblQuoteSet;
-    }
-
-    public Set<TblOpportunity> getTblOpportunitySet() {
-        return tblOpportunitySet;
-    }
-
-    public void setTblOpportunitySet(Set<TblOpportunity> tblOpportunitySet) {
-        this.tblOpportunitySet = tblOpportunitySet;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -300,5 +229,5 @@ public class TblContact implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.TblContact[ contactId=" + contactId + " ]";
     }
-    
+
 }

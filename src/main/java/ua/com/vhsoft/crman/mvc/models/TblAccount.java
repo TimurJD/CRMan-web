@@ -2,7 +2,6 @@ package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -65,31 +63,14 @@ public class TblAccount implements Serializable {
     @JoinColumn(name = "modified_by", referencedColumnName = "user_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SysUser modifiedBy;
-    @OneToMany(mappedBy = "parentAccount", fetch = FetchType.EAGER)
-    private Set<TblAccount> tblAccountSet;
     @JoinColumn(name = "parent_account", referencedColumnName = "account_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount parentAccount;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblCommunication> tblCommunicationSet;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblAddress> tblAddressSet;
-    @OneToMany(mappedBy = "relAccountId", fetch = FetchType.EAGER)
-    private Set<TblActivity> tblActivitySet;
-    @OneToMany(mappedBy = "producerId", fetch = FetchType.EAGER)
-    private Set<TblProduct> tblProductSet;
-    @OneToMany(mappedBy = "vendorId", fetch = FetchType.EAGER)
-    private Set<TblProduct> tblProductSet1;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblContract> tblContractSet;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblContact> tblContactSet;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblQuote> tblQuoteSet;
-    @OneToMany(mappedBy = "accountId", fetch = FetchType.EAGER)
-    private Set<TblOpportunity> tblOpportunitySet;
+    
+
+    
+
+
 
     public TblAccount() {
     }
@@ -194,100 +175,12 @@ public class TblAccount implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    public Set<TblAccount> getTblAccountSet() {
-        return tblAccountSet;
-    }
-
-    public void setTblAccountSet(Set<TblAccount> tblAccountSet) {
-        this.tblAccountSet = tblAccountSet;
-    }
-
     public TblAccount getParentAccount() {
         return parentAccount;
     }
 
     public void setParentAccount(TblAccount parentAccount) {
         this.parentAccount = parentAccount;
-    }
-
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
-    }
-
-    public Set<TblCommunication> getTblCommunicationSet() {
-        return tblCommunicationSet;
-    }
-
-    public void setTblCommunicationSet(Set<TblCommunication> tblCommunicationSet) {
-        this.tblCommunicationSet = tblCommunicationSet;
-    }
-
-    public Set<TblAddress> getTblAddressSet() {
-        return tblAddressSet;
-    }
-
-    public void setTblAddressSet(Set<TblAddress> tblAddressSet) {
-        this.tblAddressSet = tblAddressSet;
-    }
-
-    public Set<TblActivity> getTblActivitySet() {
-        return tblActivitySet;
-    }
-
-    public void setTblActivitySet(Set<TblActivity> tblActivitySet) {
-        this.tblActivitySet = tblActivitySet;
-    }
-
-    public Set<TblProduct> getTblProductSet() {
-        return tblProductSet;
-    }
-
-    public void setTblProductSet(Set<TblProduct> tblProductSet) {
-        this.tblProductSet = tblProductSet;
-    }
-
-    public Set<TblProduct> getTblProductSet1() {
-        return tblProductSet1;
-    }
-
-    public void setTblProductSet1(Set<TblProduct> tblProductSet1) {
-        this.tblProductSet1 = tblProductSet1;
-    }
-
-    public Set<TblContract> getTblContractSet() {
-        return tblContractSet;
-    }
-
-    public void setTblContractSet(Set<TblContract> tblContractSet) {
-        this.tblContractSet = tblContractSet;
-    }
-
-    public Set<TblContact> getTblContactSet() {
-        return tblContactSet;
-    }
-
-    public void setTblContactSet(Set<TblContact> tblContactSet) {
-        this.tblContactSet = tblContactSet;
-    }
-
-    public Set<TblQuote> getTblQuoteSet() {
-        return tblQuoteSet;
-    }
-
-    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
-        this.tblQuoteSet = tblQuoteSet;
-    }
-
-    public Set<TblOpportunity> getTblOpportunitySet() {
-        return tblOpportunitySet;
-    }
-
-    public void setTblOpportunitySet(Set<TblOpportunity> tblOpportunitySet) {
-        this.tblOpportunitySet = tblOpportunitySet;
     }
 
     @Override

@@ -10,6 +10,7 @@
 <spring:url var = "invoices" value="/invoices" />
 <spring:url var = "orders" value="/orders" />
 <spring:url var = "quotes" value="/quotes" />
+<spring:url var = "oppertunities" value="/oppertunities" />
 <spring:url var = "admin" value="/admin" />
 <spring:url var = "about" value="/about" />
 <spring:url var = "troubleshooting" value="/troubleshooting" />
@@ -22,15 +23,15 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="${activities}">Home</a></li>
-                <li><a href="${leads}">Leeds</a></li>
+                <li><a href="${leeds}">Leeds</a></li>
                 <li><a href="${contacts}">Contacts</a></li> 
                 <li><a href="${accounts}">Accounts</a></li> 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">Sales<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${contracts}">Opportunities</a></li>
+                        <li><a href="${oppertunities}">Opportunities</a></li>
                         <li><a href="${quotes}">Quotes</a></li>
-                        <li><a href="${invoices}">Orders</a></li>
+                        <li><a href="${orders}">Orders</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

@@ -1,18 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -34,9 +30,7 @@ public class SubCommunicationType implements Serializable {
     @Size(max = 45)
     @Column(name = "type_name")
     private String typeName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "communicationTypeId", fetch = FetchType.EAGER)
-    private Set<TblCommunication> tblCommunicationSet;
-
+    
     public SubCommunicationType() {
     }
 
@@ -58,14 +52,6 @@ public class SubCommunicationType implements Serializable {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
-    }
-
-    public Set<TblCommunication> getTblCommunicationSet() {
-        return tblCommunicationSet;
-    }
-
-    public void setTblCommunicationSet(Set<TblCommunication> tblCommunicationSet) {
-        this.tblCommunicationSet = tblCommunicationSet;
     }
 
     @Override

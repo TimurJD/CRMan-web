@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,11 +30,7 @@ public class SubSex implements Serializable {
     @Size(max = 10)
     @Column(name = "sex")
     private String sex;
-    @OneToMany(mappedBy = "sexId", fetch = FetchType.EAGER)
-    private Set<TblLead> tblLeadSet;
-    @OneToMany(mappedBy = "sexId", fetch = FetchType.EAGER)
-    private Set<TblContact> tblContactSet;
-
+    
     public SubSex() {
     }
 
@@ -59,22 +52,6 @@ public class SubSex implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public Set<TblLead> getTblLeadSet() {
-        return tblLeadSet;
-    }
-
-    public void setTblLeadSet(Set<TblLead> tblLeadSet) {
-        this.tblLeadSet = tblLeadSet;
-    }
-
-    public Set<TblContact> getTblContactSet() {
-        return tblContactSet;
-    }
-
-    public void setTblContactSet(Set<TblContact> tblContactSet) {
-        this.tblContactSet = tblContactSet;
     }
 
     @Override

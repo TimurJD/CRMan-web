@@ -1,7 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,17 +23,18 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "SubCity.findAll", query = "SELECT s FROM SubCity s")})
 public class SubCity implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "city_id")
     private Integer cityId;
-    @OneToMany(mappedBy = "cityId", fetch = FetchType.EAGER)
-    private Set<TblAddress> tblAddressSet;
     @JoinColumn(name = "region_id", referencedColumnName = "region_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubRegion regionId;
+    @Column(name = "city_name")
+    private String cityName;
 
     public SubCity() {
     }
@@ -52,14 +51,6 @@ public class SubCity implements Serializable {
         this.cityId = cityId;
     }
 
-    public Set<TblAddress> getTblAddressSet() {
-        return tblAddressSet;
-    }
-
-    public void setTblAddressSet(Set<TblAddress> tblAddressSet) {
-        this.tblAddressSet = tblAddressSet;
-    }
-
     public SubRegion getRegionId() {
         return regionId;
     }
@@ -67,6 +58,16 @@ public class SubCity implements Serializable {
     public void setRegionId(SubRegion regionId) {
         this.regionId = regionId;
     }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    
+    
 
     @Override
     public int hashCode() {
@@ -92,5 +93,5 @@ public class SubCity implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SubCity[ cityId=" + cityId + " ]";
     }
-    
+
 }

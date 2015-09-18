@@ -1,7 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -46,10 +44,6 @@ public class TblProduct implements Serializable {
     private Long price;
     @Column(name = "record_state")
     private Boolean recordState;
-    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
-    private Set<TblOrder> tblOrderSet;
-    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
-    private Set<SubContractProduct> subContractProductSet;
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private SubCountry countryId;
@@ -68,8 +62,7 @@ public class TblProduct implements Serializable {
     @JoinColumn(name = "vendor_id", referencedColumnName = "account_id")
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount vendorId;
-    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
-    private Set<TblQuote> tblQuoteSet;
+   
 
     public TblProduct() {
     }
@@ -134,21 +127,6 @@ public class TblProduct implements Serializable {
         this.recordState = recordState;
     }
 
-    public Set<TblOrder> getTblOrderSet() {
-        return tblOrderSet;
-    }
-
-    public void setTblOrderSet(Set<TblOrder> tblOrderSet) {
-        this.tblOrderSet = tblOrderSet;
-    }
-
-    public Set<SubContractProduct> getSubContractProductSet() {
-        return subContractProductSet;
-    }
-
-    public void setSubContractProductSet(Set<SubContractProduct> subContractProductSet) {
-        this.subContractProductSet = subContractProductSet;
-    }
 
     public SubCountry getCountryId() {
         return countryId;
@@ -198,14 +176,7 @@ public class TblProduct implements Serializable {
         this.vendorId = vendorId;
     }
 
-    public Set<TblQuote> getTblQuoteSet() {
-        return tblQuoteSet;
-    }
-
-    public void setTblQuoteSet(Set<TblQuote> tblQuoteSet) {
-        this.tblQuoteSet = tblQuoteSet;
-    }
-
+ 
     @Override
     public int hashCode() {
         int hash = 0;

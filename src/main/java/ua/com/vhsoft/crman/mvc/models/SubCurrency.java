@@ -1,15 +1,12 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,12 +36,7 @@ public class SubCurrency implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "currency_name")
     private String currencyName;
-    @OneToMany(mappedBy = "defaultCurrencyId", fetch = FetchType.EAGER)
-    private Set<SubCountry> subCountrySet;
-    @OneToMany(mappedBy = "currencyId", fetch = FetchType.EAGER)
-    private Set<TblProduct> tblProductSet;
-    @OneToMany(mappedBy = "revenueCurrencyId", fetch = FetchType.EAGER)
-    private Set<TblOpportunity> tblOpportunitySet;
+    
 
     public SubCurrency() {
     }
@@ -83,30 +75,7 @@ public class SubCurrency implements Serializable {
         this.currencyName = currencyName;
     }
 
-    public Set<SubCountry> getSubCountrySet() {
-        return subCountrySet;
-    }
-
-    public void setSubCountrySet(Set<SubCountry> subCountrySet) {
-        this.subCountrySet = subCountrySet;
-    }
-
-    public Set<TblProduct> getTblProductSet() {
-        return tblProductSet;
-    }
-
-    public void setTblProductSet(Set<TblProduct> tblProductSet) {
-        this.tblProductSet = tblProductSet;
-    }
-
-    public Set<TblOpportunity> getTblOpportunitySet() {
-        return tblOpportunitySet;
-    }
-
-    public void setTblOpportunitySet(Set<TblOpportunity> tblOpportunitySet) {
-        this.tblOpportunitySet = tblOpportunitySet;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

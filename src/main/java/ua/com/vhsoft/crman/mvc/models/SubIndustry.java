@@ -1,17 +1,14 @@
 package ua.com.vhsoft.crman.mvc.models;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -33,10 +30,7 @@ public class SubIndustry implements Serializable {
     @Size(max = 45)
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "industryId", fetch = FetchType.EAGER)
-    private Set<TblLead> tblLeadSet;
-    @OneToMany(mappedBy = "industryId", fetch = FetchType.EAGER)
-    private Set<TblAccount> tblAccountSet;
+    
 
     public SubIndustry() {
     }
@@ -61,21 +55,6 @@ public class SubIndustry implements Serializable {
         this.name = name;
     }
 
-    public Set<TblLead> getTblLeadSet() {
-        return tblLeadSet;
-    }
-
-    public void setTblLeadSet(Set<TblLead> tblLeadSet) {
-        this.tblLeadSet = tblLeadSet;
-    }
-
-    public Set<TblAccount> getTblAccountSet() {
-        return tblAccountSet;
-    }
-
-    public void setTblAccountSet(Set<TblAccount> tblAccountSet) {
-        this.tblAccountSet = tblAccountSet;
-    }
 
     @Override
     public int hashCode() {
