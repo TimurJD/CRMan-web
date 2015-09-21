@@ -21,6 +21,7 @@ public class CRManMVCConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver setupViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setCache(false); // TODO i'm not sure but it seems we need to find out more appropriate solution. And It's only for dev version.
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         return resolver;
@@ -29,15 +30,14 @@ public class CRManMVCConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-        registry.addResourceHandler("/resources/css/**").addResourceLocations("/resources/css/").setCachePeriod(31556926);
-        registry.addResourceHandler("/resources/img/**").addResourceLocations("/resources/img/").setCachePeriod(31556926);
-        registry.addResourceHandler("/resources/js/**").addResourceLocations("/resources/js/").setCachePeriod(31556926);
-        registry.addResourceHandler("/resources/fonts/**").addResourceLocations("/resources/fonts/").setCachePeriod(31556926);
+        registry.addResourceHandler("/resources/css/**").addResourceLocations("/resources/css/");
+        registry.addResourceHandler("/resources/img/**").addResourceLocations("/resources/img/");
+        registry.addResourceHandler("/resources/js/**").addResourceLocations("/resources/js/");
+        registry.addResourceHandler("/resources/fonts/**").addResourceLocations("/resources/fonts/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
-
 }
