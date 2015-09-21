@@ -18,15 +18,8 @@
 
         <%@ include file="../jspf/header.jspf"%>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <!-- content -->
-        <div class="container-fluid">
+        <div class="container-fluid body-align-center">
             <div class="row-fluid">
                 <div class="col-lg-12">
                     <div class="centering text-center error-container">
