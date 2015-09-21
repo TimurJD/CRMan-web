@@ -12,13 +12,8 @@
     <head>
         <title>Sign in</title>
 
-        <spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
+        <%@ include file="../jspf/css.jspf"%>
         <spring:url value="/resources/css/login.css" var="loginCss" />
-
-        <!-- Bootstrap core CSS -->
-        <link href="${coreCss}" type="text/css" rel="stylesheet" />
-
-        <!-- Custom styles for this template -->
         <link href="${loginCss}" type="text/css" rel="stylesheet" />
     </head>
     <body>

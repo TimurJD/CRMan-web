@@ -1,5 +1,5 @@
 <%-- 
-    Document   : error403
+    Document   : error404
     Created on : Sep 15, 2015, 4:43:06 PM
     Author     : Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
 --%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>403 | Access denied</title>
+        <title>404 | Not found</title>
         <%@ include file="../jspf/css.jspf"%>
 
     </head>
@@ -32,10 +32,10 @@
                     <div class="centering text-center error-container">
                         <div class="text-center">
                             <h2 class="without-margin">
-                                Don't worry. It's <span class="text-warning"><big>403</big></span>
+                                Don't worry. It's <span class="text-warning"><big>404</big></span>
                                 error only.
                             </h2>
-                            <h4 class="text-warning">Access denied</h4>
+                            <h4 class="text-warning">Not found</h4>
                         </div>
                     </div>
                 </div>

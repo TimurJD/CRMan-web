@@ -1,0 +1,9 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
+<spring:url value="/resources/css/bootstrap.custom.css" var="customCss" />
+<spring:url value="/resources/css/sticky_footer.css" var="stickyFooter" />
+<!-- Bootstrap core CSS -->
+<link href="${coreCss}" type="text/css" rel="stylesheet" />
+<link href="${customCss}" type="text/css" rel="stylesheet" />
+<link href="${stickyFooter}" type="text/css" rel="stylesheet" />

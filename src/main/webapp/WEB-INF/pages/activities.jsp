@@ -7,26 +7,47 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html data-ng-app>
+<html data-ng-app="activitiesApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <spring:url value="/resources/css/bootstrap.min.css" var="bootstrap" />
-        <spring:url value="/resources/css/bootstrap.custom.css" var="bootstrapCustom" />
-
-        <link type="text/css" rel="stylesheet" href=${bootstrap} />
-        <link type="text/css" rel="stylesheet" href=${bootstrapCustom} />
+        
+        <%@ include file="../jspf/css.jspf"%>
 
         <title>Activities</title>
     </head>
-    <body>
+    <body data-ng-controller="tableController">
         <%@ include file="../jspf/header.jspf" %>
         
 
         <div class="container">
             
+            <div>
+                
+                <table class="table table-bordered table-responsive">
+                    <tr>
+                        <td>Title</td>
+                        <td>Description</td>
+                        <td>Start date</td>
+                        <td>Due Date</td>
+                        <td>Created on</td>
+                        <td>Created by</td>
+                    </tr>
+                    <tr data-ng-repeat="entry in activities">
+                        <td>{{entry.title}}</td>
+                        <td>{{entry.description}}</td>
+                        <td>{{entry.startDate}}</td>
+                        <td>{{entry.dueDate}}</td>
+                        <td>{{entry.createdOn}}</td>
+                        <td>{{entry.createdBy.login}}</td>
+                    </tr>
+                </table>
+                
+            </div>
+            
         </div>
 
         <%@ include file="../jspf/footer.jspf" %>
+        <spring:url var="activitiesNG" value="/resources/js/ng.activities.js" />
+        <script type="text/javascript" src="${activitiesNG}"></script>
     </body>
 </html>

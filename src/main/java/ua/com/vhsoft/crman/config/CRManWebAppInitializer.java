@@ -22,7 +22,10 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
         
         servletContext.addListener(new ContextLoaderListener(ctx));
         
-        Dynamic registration = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+        
+        Dynamic registration = servletContext.addServlet("dispatcher", dispatcherServlet);
         registration.setLoadOnStartup(1);
         registration.addMapping("/");
     }

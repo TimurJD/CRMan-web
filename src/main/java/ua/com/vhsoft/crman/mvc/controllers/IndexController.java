@@ -21,4 +21,9 @@ public class IndexController {
     public String accesDeniedPage(Model model) {
         return "error403";
     }
+    
+    @RequestMapping("/error404")
+    public String notFoundPage(Model model) {
+        return "error404";
+    }
 }

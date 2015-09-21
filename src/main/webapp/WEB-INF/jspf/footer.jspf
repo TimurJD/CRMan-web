@@ -1,29 +1,31 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8"%>
 
-<spring:url value="/resources/css/sticky_footer.css" var="stickyFooter" />
+
 <footer class="footer">
-	<div class="container well navbar navbar-footer navbar-fixed-bottom">
-		<div class="row">
-			<div class="col-md-6">
-				<a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${admin}" class="text-muted">Manage platform</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${about}" class="text-muted">About us</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${troubleshooting}" class="text-muted">Report bug</a>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="container">
-		<p align="center" class="text-muted"><tiles:insertAttribute name="footer" /></p>
-	</div> -->
+    <div class="container well navbar navbar-footer navbar-fixed-bottom">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${admin}" class="text-muted">Manage platform</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${about}" class="text-muted">About us</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${troubleshooting}" class="text-muted">Report bug</a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container">
+            <p align="center" class="text-muted"><tiles:insertAttribute name="footer" /></p>
+    </div> -->
 </footer>
 
+<spring:url var="globalVars" value="/resources/js/global.js" />
+<script type="text/javascript" src="${globalVars}"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
