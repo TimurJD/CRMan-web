@@ -10,40 +10,51 @@
 <html data-ng-app="activitiesApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <%@ include file="../jspf/css.jspf"%>
 
         <title>Activities</title>
     </head>
     <body data-ng-controller="tableController">
         <%@ include file="../jspf/header.jspf" %>
-        
+
 
         <div class="container">
-            
+
             <div>
-                
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <td>Title</td>
-                        <td>Description</td>
-                        <td>Start date</td>
-                        <td>Due Date</td>
-                        <td>Created on</td>
-                        <td>Created by</td>
-                    </tr>
-                    <tr data-ng-repeat="entry in activities">
-                        <td>{{entry.title}}</td>
-                        <td>{{entry.description}}</td>
-                        <td>{{entry.startDate}}</td>
-                        <td>{{entry.dueDate}}</td>
-                        <td>{{entry.createdOn}}</td>
-                        <td>{{entry.createdBy.login}}</td>
-                    </tr>
+
+                <table class="table table-responsive table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Title</td>
+                            <td>Description</td>
+                            <td>Start date</td>
+                            <td>Due Date</td>
+                            <td>Created on</td>
+                            <td>Created by</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="entry in activities">
+                            <td></td>
+                            <td>{{entry.title}}</td>
+                            <td>{{entry.description}}</td>
+                            <td>{{entry.startDate}}</td>
+                            <td>{{entry.dueDate}}</td>
+                            <td>{{entry.createdOn}}</td>
+                            <td>{{entry.createdBy.login}}</td>
+                            <td>
+                                <button>Add</button>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-                
+
             </div>
-            
+
         </div>
 
         <%@ include file="../jspf/footer.jspf" %>
