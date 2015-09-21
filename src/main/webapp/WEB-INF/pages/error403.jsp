@@ -8,22 +8,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>403 | Access denied</title>
-	
-		<spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
-		<spring:url value="/resources/css/bootstrap.custom.css" var="customCss" />
-		<!-- Bootstrap core CSS -->
-		<link href="${coreCss}" type="text/css" rel="stylesheet" />
-		<link href="${customCss}" type="text/css" rel="stylesheet" />
-</head>
-<body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>403 | Access denied</title>
+        <%@ include file="../jspf/css.jspf"%>
 
-	<%@ include file="../jspf/header.jspf"%>
+    </head>
+    <body>
 
-	<!-- content -->
-	<div class="container-fluid body-align-center">
+<!-- content -->
+<div class="container-fluid body-align-center">
 		<div class="row-fluid">
 			<div class="col-lg-12">
 				<div class="centering text-center error-container">
