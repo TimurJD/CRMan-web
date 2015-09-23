@@ -15,7 +15,7 @@ public class LoginController {
     private final Logger LOGGER = Logger.getLogger(this.getClass());
 
     @RequestMapping(path = "/login**", method = RequestMethod.GET)
-    public String login(Model model) {
+    public String showLoggin(Model model) {
         LOGGER.info("User login view request");
         
         return "login";

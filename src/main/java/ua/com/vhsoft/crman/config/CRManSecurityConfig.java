@@ -35,9 +35,13 @@ public class CRManSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/activities**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers("/").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers("/api/**").permitAll()
+        		.antMatchers("/").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+        		.antMatchers("/api/**").permitAll()
+                .antMatchers("/activities/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/accounts/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/contacts/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/contracts/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/invoices/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
                 //TODO add more rules later
                 .and().formLogin()
                 .loginPage("/login").permitAll()

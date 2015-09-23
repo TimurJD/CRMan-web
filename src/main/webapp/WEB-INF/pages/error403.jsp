@@ -15,7 +15,7 @@
 
     </head>
     <body>
-
+		<%@ include file="../jspf/header.jspf"%>
         <!-- content -->
         <div class="container-fluid body-align-center">
             <div class="row-fluid">
