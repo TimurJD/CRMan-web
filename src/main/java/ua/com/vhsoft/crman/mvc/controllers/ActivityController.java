@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-@Controller()
+@Controller
 public class ActivityController {
     
     private final Logger LOGGER = Logger.getLogger(this.getClass());
@@ -19,6 +19,4 @@ public class ActivityController {
         LOGGER.info("Activities view request");
         return "activities";
     }
-    
-    
 }
