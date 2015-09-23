@@ -28,14 +28,6 @@
                             </h2>
                             <h4 class="text-warning">Access denied</h4>
                         </div>
-                        <!-- <div class="text-center">
-            <h3><small>Choose an option below</small></h3>
-        </div> -->
-                        <!-- <hr>
-        <ul class="pager">
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="error-pages.html">Other error pages &rarr;</a></li>
-        </ul> -->
                     </div>
                 </div>
             </div>

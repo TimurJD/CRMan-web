@@ -98,5 +98,7 @@ public class SysPosition implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.SysPosition[ positionId=" + positionId + " ]";
     }
+
+
         
 }

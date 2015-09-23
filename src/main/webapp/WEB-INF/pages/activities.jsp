@@ -15,16 +15,21 @@
 
         <title>Activities</title>
     </head>
-    <body data-ng-controller="tableController">
+    <body data-ng-controller="TableController">
         <%@ include file="../jspf/header.jspf" %>
 
-
+        
         <div class="container">
 
+            <div class="panel panel-title">
+                <button class="btn" title="Add"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                <button class="btn" title="Add"><i class="glyphicon glyphicon-remove"></i>  Remove selected</button>
+            </div>
+            
             <div>
 
                 <table class="table table-responsive table-condensed table-hover">
-                    <thead>
+                    <thead class="well">
                         <tr>
                             <td></td>
                             <td>Title</td>
@@ -33,21 +38,23 @@
                             <td>Due Date</td>
                             <td>Created on</td>
                             <td>Created by</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in activities">
-                            <td></td>
+                        <tr data-ng-repeat="entry in data.activities | filter:search">
+                            <td><input type="checkbox" data-ng-model="entry.selected"></td>
                             <td>{{entry.title}}</td>
                             <td>{{entry.description}}</td>
                             <td>{{entry.startDate}}</td>
                             <td>{{entry.dueDate}}</td>
+                            <td>{{timeConverter(1443016269)}}</td>
                             <td>{{entry.createdOn}}</td>
                             <td>{{entry.createdBy.login}}</td>
                             <td>
-                                <button>Add</button>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <button class="glyphicon glyphicon-duplicate" title="Clone"></button>
+                                <button class="glyphicon glyphicon-edit" title="Edit"></button>
+                                <button class="glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
                             </td>
                         </tr>
                     </tbody>

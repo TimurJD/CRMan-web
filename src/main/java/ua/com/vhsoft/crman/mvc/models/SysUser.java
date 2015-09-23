@@ -187,5 +187,7 @@ public class SysUser implements Serializable {
         return "ua.com.vhsoft.crman.mvc.models.SysUser[ userId=" + userId + " ]";
     }
 
+ 
+
 
 }

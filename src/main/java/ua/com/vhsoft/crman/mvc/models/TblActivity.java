@@ -1,5 +1,6 @@
 package ua.com.vhsoft.crman.mvc.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -29,6 +30,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "TblActivity.findAll", query = "SELECT t FROM TblActivity t")})
 public class TblActivity implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,14 +52,23 @@ public class TblActivity implements Serializable {
     private String resultDescription;
     @Column(name = "start_date")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date startDate;
     @Column(name = "due_date")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date dueDate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_on")
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(
+            shape = JsonFormat.Shape.STRING,
+            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date createdOn;
     @Column(name = "rel_lead_id")
     private Integer relLeadId;
@@ -272,5 +283,5 @@ public class TblActivity implements Serializable {
     public String toString() {
         return "ua.com.vhsoft.crman.mvc.models.TblActivity[ activityId=" + activityId + " ]";
     }
-    
+
 }
