@@ -11,7 +11,7 @@ import ua.com.vhsoft.crman.mvc.models.TblActivity;
  *
  * @author Vasyl Hoshovsky <vasyl.hoshovsky at vhsoft.com.ua>
  */
-@Component()
+@Component
 public class TblActivityManipulator {
 
     @Autowired

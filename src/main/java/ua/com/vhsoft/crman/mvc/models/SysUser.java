@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.data.annotation.Transient;
 
 /**
  *
@@ -44,6 +45,7 @@ public class SysUser implements Serializable {
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "password_hash")
+    @Transient
     private String passwordHash;
     @Column(name = "enabled")
     private Boolean enabled;

@@ -18,17 +18,22 @@
     <body data-ng-controller="TableController">
         <%@ include file="../jspf/header.jspf" %>
 
-        
+
         <div class="container">
 
-            <div class="panel panel-title">
-                <button class="btn" title="Add"><i class="glyphicon glyphicon-plus"></i> Add</button>
-                <button class="btn" title="Add"><i class="glyphicon glyphicon-remove"></i>  Remove selected</button>
+            <div class="panel panel-title panel-table-management">
+                <div class="btn-group">
+                    <button class="btn btn-success" title="Add"><i class="glyphicon glyphicon-plus"></i></button>
+                    <button class="btn btn-danger" title="Remove selected"><i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-info" title="Add"><i class="glyphicon glyphicon-filter"></i></button>
+                </div>
             </div>
-            
+
             <div>
 
-                <table class="table table-responsive table-condensed table-hover">
+                <table class="table table-striped table-responsive table-condensed table-hover" >
                     <thead class="well">
                         <tr>
                             <td></td>
@@ -42,19 +47,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in data.activities | filter:search">
+                        <tr data-ng-repeat="entry in data.activities| filter:search">
                             <td><input type="checkbox" data-ng-model="entry.selected"></td>
-                            <td>{{entry.title}}</td>
-                            <td>{{entry.description}}</td>
-                            <td>{{entry.startDate}}</td>
-                            <td>{{entry.dueDate}}</td>
-                            <td>{{timeConverter(1443016269)}}</td>
-                            <td>{{entry.createdOn}}</td>
-                            <td>{{entry.createdBy.login}}</td>
-                            <td>
-                                <button class="glyphicon glyphicon-duplicate" title="Clone"></button>
-                                <button class="glyphicon glyphicon-edit" title="Edit"></button>
-                                <button class="glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
+                            <td>{{ entry.title}}</td>
+                            <td>{{ entry.description}}</td>
+                            <td>{{ entry.startDate | date:'dd.MM.yyyy HH:mm' }}</td>
+                            <td>{{ entry.dueDate | date:'dd.MM.yyyy HH:mm' }}</td>
+                            <td>{{ entry.createdOn | date:'dd.MM.yyyy HH:mm' }}</td>
+                            <td>{{ entry.createdBy.login}}</td>
+                            <td class="text-right btn-group-xs">
+                                <button class="btn btn-info glyphicon glyphicon-duplicate" title="Clone"></button>
+                                <button class="btn btn-info glyphicon glyphicon-edit" title="Edit"></button>
+                                <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
                             </td>
                         </tr>
                     </tbody>

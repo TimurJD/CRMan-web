@@ -1,6 +1,5 @@
 package ua.com.vhsoft.crman.mvc.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -52,23 +51,14 @@ public class TblActivity implements Serializable {
     private String resultDescription;
     @Column(name = "start_date")
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(
-            shape = JsonFormat.Shape.STRING,
-            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date startDate;
     @Column(name = "due_date")
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(
-            shape = JsonFormat.Shape.STRING,
-            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date dueDate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_on")
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(
-            shape = JsonFormat.Shape.STRING,
-            pattern = "dd-MM-yyyy hh:mm:ss")
     private Date createdOn;
     @Column(name = "rel_lead_id")
     private Integer relLeadId;
