@@ -1,5 +1,7 @@
 package ua.com.vhsoft.crman.mvc.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -18,7 +20,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.springframework.data.annotation.Transient;
 
 /**
  *
@@ -45,7 +46,7 @@ public class SysUser implements Serializable {
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "password_hash")
-    @Transient
+    @JsonIgnore
     private String passwordHash;
     @Column(name = "enabled")
     private Boolean enabled;
@@ -99,10 +100,12 @@ public class SysUser implements Serializable {
         this.login = login;
     }
 
+    @JsonIgnore
     public String getPasswordHash() {
         return passwordHash;
     }
 
+    @JsonProperty
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }

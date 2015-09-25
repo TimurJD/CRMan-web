@@ -19,6 +19,8 @@ public class SysFilterManipulator {
     private SysFilterService sysFilterService;
     @Autowired
     private SysFilterPredicate sysFilterPredicate;
+    @Autowired
+    private SysUserManipulator sysUserManipulator;
     
     /**
      * Retrieve all filters for current user
@@ -26,8 +28,24 @@ public class SysFilterManipulator {
      * @return list of filter objects
      */
     public List<SysFilter> getFiltersByUser(){
-        SysUser sysUser = null;  //TODO get current logged in user
+        SysUser sysUser = sysUserManipulator.getCurrentlyLoggedInUser();
+        if (sysUser == null) {
+            return null;
+        }
         return sysFilterService.findAll(sysFilterPredicate.filterByUser(sysUser));
+    }
+    
+    /**
+     * Retrieve all filters for current user
+     * 
+     * @return list of filter objects
+     */
+    public List<SysFilter> getFiltersByUserAndTable(String tableName){
+        SysUser sysUser = sysUserManipulator.getCurrentlyLoggedInUser();
+        if (sysUser == null) {
+            return null;
+        }
+        return sysFilterService.findAll(sysFilterPredicate.filterByUserAndTable(sysUser, tableName));
     }
     
     //TODO add other CRUD methods
