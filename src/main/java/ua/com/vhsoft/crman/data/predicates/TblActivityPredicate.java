@@ -10,8 +10,7 @@ import ua.com.vhsoft.crman.mvc.models.QTblActivity;
  */
 @Component
 public class TblActivityPredicate implements AbstractPredicate {
-
-    
+   
     @Override
     public BooleanExpression filterById(Integer id) {
         return QTblActivity.tblActivity.activityId.eq(id);
@@ -26,7 +25,5 @@ public class TblActivityPredicate implements AbstractPredicate {
     public BooleanExpression filterByNameLike(String name) {
         return QTblActivity.tblActivity.title.like(name);
     }
-    
-    
     
 }
