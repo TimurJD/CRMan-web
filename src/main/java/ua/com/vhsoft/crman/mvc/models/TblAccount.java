@@ -67,11 +67,6 @@ public class TblAccount implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private TblAccount parentAccount;
     
-
-    
-
-
-
     public TblAccount() {
     }
 
