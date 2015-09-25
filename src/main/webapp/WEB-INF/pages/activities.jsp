@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html data-ng-app="activitiesApp">
+<html data-ng-app="app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -15,21 +15,30 @@
 
         <title>Activities</title>
     </head>
-    <body data-ng-controller="TableController">
+    <body>
         <%@ include file="../jspf/header.jspf" %>
 
-
-        <div class="container">
+        <div class="container" data-ng-controller="TableController" data-ng-init="init('activities')">
+            {{data.currentTable}}
+            <div class="" data-ng-controller="FilterController">
+                <div class="check-element animate-show" data-ng-show="data.filterVisibility">
+                    TODO
+                </div>
+                <div data-ng-hide="data.filterVisibility" ></div>
+            </div>
 
             <div class="panel panel-title panel-table-management">
                 <div class="btn-group">
-                    <button class="btn btn-success" title="Add"><i class="glyphicon glyphicon-plus"></i></button>
-                    <button class="btn btn-danger" title="Remove selected"><i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-success" title="Add" data-ng-click="add()"><i class="glyphicon glyphicon-plus"></i></button>
+                    <button class="btn btn-danger" title="Remove selected" data-ng-click="deleteSelected()"><i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div class="btn-group pull-right">
-                    <button class="btn btn-info" title="Add"><i class="glyphicon glyphicon-filter"></i></button>
+                    <button class="btn btn-info" title="Filters" data-ng-click="toggleFilters()"><i class="glyphicon glyphicon-filter"></i></button>
                 </div>
+
             </div>
+
+
 
             <div>
 
@@ -47,7 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in data.activities| filter:search">
+                        <tr data-ng-repeat="entry in data.tableData| filter:search">
                             <td><input type="checkbox" data-ng-model="entry.selected"></td>
                             <td>{{ entry.title}}</td>
                             <td>{{ entry.description}}</td>

@@ -10,7 +10,7 @@
 <spring:url var = "invoices" value="/invoices" />
 <spring:url var = "orders" value="/orders" />
 <spring:url var = "quotes" value="/quotes" />
-<spring:url var = "oppertunities" value="/oppertunities" />
+<spring:url var = "opportunities" value="/opportunities" />
 <spring:url var = "admin" value="/admin" />
 <spring:url var = "about" value="/about" />
 <spring:url var = "troubleshooting" value="/troubleshooting" />

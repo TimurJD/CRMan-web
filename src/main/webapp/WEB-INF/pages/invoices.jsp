@@ -15,7 +15,7 @@
         <%@ include file="../jspf/css.jspf"%>
     </head>
     <body>
-		<%@ include file="../jspf/header.jspf"%>
-		<%@ include file="../jspf/footer.jspf"%>
+        <%@ include file="../jspf/header.jspf"%>
+        <%@ include file="../jspf/footer.jspf"%>
     </body>
 </html>
