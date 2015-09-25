@@ -3,16 +3,14 @@ var app = angular.module('app', ['ngResource']);
 app.controller('TableController', ['$scope', 'DataService', 'ShareService', function ($scope, dataService, shareService) {
         $scope.data = {
             filterVisibility: false,
-            currentTable: ''
-
         };
 
-        function initData(tableName){
+        function initData(tableName) {
             dataService.all(tableName).query(function (response) {
                 $scope.data.tableData = response;
             });
         }
-        
+
         $scope.clone = function (id) {
             console.log('clone ' + id); //TODO
         };
@@ -24,7 +22,7 @@ app.controller('TableController', ['$scope', 'DataService', 'ShareService', func
         };
 
         $scope.add = function () {
-            console.log('add new' + data.currentTable); //TODO
+            console.log('add new ' + shareService.getCurrentTable()); //TODO
         };
 
         /*
@@ -49,7 +47,7 @@ app.controller('TableController', ['$scope', 'DataService', 'ShareService', func
          * @returns {undefined}
          */
         $scope.init = function (tableName) {
-            $scope.data.currentTable = tableName;
+            shareService.setCurrentTable(tableName);
             initData(tableName);
         };
 
@@ -58,6 +56,11 @@ app.controller('TableController', ['$scope', 'DataService', 'ShareService', func
 
 app.controller('FilterController', ['$scope', 'DataService', 'ShareService', function ($scope, dataService, shareService) {
 
+        $scope.fData = {};
+
+        dataService.filters(shareService.getCurrentTable()).query(function (response) {
+            $scope.fData.filters = response;
+        });
 
     }]);
 
@@ -68,15 +71,25 @@ app.factory('DataService', ['$resource', function ($resource) {
                 return $resource(restPath + tableName + '/all');
             },
             filtered: function () {
-                return "smth";
+                return "smth"; //TODO
+            },
+            filters: function (tableName) {
+                return $resource(restPath + 'filters/' + tableName);
             }
         };
     }]);
 
 app.factory('ShareService', function () {
     var data = {
+        currentTable: ''
     };
 
     return {
+        getCurrentTable: function () {
+            return data.currentTable;
+        },
+        setCurrentTable: function (currentTable) {
+            data.currentTable = currentTable;
+        }
     };
 });

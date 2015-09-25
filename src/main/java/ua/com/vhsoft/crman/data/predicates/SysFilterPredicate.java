@@ -30,5 +30,9 @@ public class SysFilterPredicate implements AbstractPredicate {
     public BooleanExpression filterByUser(SysUser sysUser) {
         return QSysFilter.sysFilter.userId.eq(sysUser);
     }
+   
+    public BooleanExpression filterByUserAndTable(SysUser sysUser, String tableName) {
+        return filterByUser(sysUser).and(QSysFilter.sysFilter.tableName.eq(tableName));
+    }
     
 }
