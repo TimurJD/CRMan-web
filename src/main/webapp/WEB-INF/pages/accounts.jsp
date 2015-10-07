@@ -10,24 +10,30 @@
 <!DOCTYPE html>
 <html data-ng-app="accountsApp">
     <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Accounts</title>
 
         <%@ include file="../jspf/css.jspf"%>
     </head>
-    <body data-ng-controller="TableController">
-		<%@ include file="../jspf/header.jspf"%>
-		
-		<div class="container">
+    <body>
+        <%@ include file="../jspf/header.jspf"%>
 
-            <div class="panel panel-title panel-table-management">
+
+
+
+        <div class="container"  data-ng-controller="TableController " data-ng-init="init('accounts')">
+
+            <%@ include file="../jspf/filter.jspf" %>
+
+            <div class="panel panel-title panel-table-management col-lg-12">
                 <div class="btn-group">
-                    <button class="btn btn-success" title="Add"><i class="glyphicon glyphicon-plus"></i></button>
-                    <button class="btn btn-danger" title="Remove selected"><i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-success" title="Add" data-ng-click="add()"><i class="glyphicon glyphicon-plus"></i></button>
+                    <button class="btn btn-danger" title="Remove selected" data-ng-click="deleteSelected()"><i class="glyphicon glyphicon-remove"></i></button>
                 </div>
                 <div class="btn-group pull-right">
-                    <button class="btn btn-info" title="Add"><i class="glyphicon glyphicon-filter"></i></button>
+                    <button class="btn btn-info" title="Filters" data-ng-click="toggleFilters()"><i class="glyphicon glyphicon-filter"></i></button>
                 </div>
+
             </div>
 
             <div>
@@ -38,7 +44,7 @@
                             <td></td>
                             <td>Name</td>
                             <td>Industry</td>
-                           	<td>Employees count</td>
+                            <td>Employees count</td>
                             <td>Revenue</td>
                             <td>Created on</td>
                             <td>Created by</td>
@@ -46,17 +52,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in data.accounts| filter:search">
+                        <tr data-ng-repeat="entry in data.tableData| filter:search">
                             <td><input type="checkbox" data-ng-model="entry.selected"></td>
-                            <td>{{ entry.accountName }}</td>
-                            <td>{{ entry.industryId.name }}</td>
-                            <td>{{ entry.employeesCount }}</td>
-                            <td>{{ entry.annualRevenue }}</td>
+                            <td>{{ entry.accountName}}</td>
+                            <td>{{ entry.industryId.name}}</td>
+                            <td>{{ entry.employeesCount}}</td>
+                            <td>{{ entry.annualRevenue}}</td>
                             <td>{{ entry.createdOn | date:'dd.MM.yyyy HH:mm' }}</td>
                             <td>{{ entry.createdBy.login}}</td>
                             <td class="text-right btn-group-xs">
-                                <button class="btn btn-info glyphicon glyphicon-duplicate" title="Clone"></button>
-                                <button class="btn btn-info glyphicon glyphicon-edit" title="Edit"></button>
+                                <button class="btn btn-info glyphicon glyphicon-duplicate" title="Clone" data-ng-click="clone(entry.activityId)"></button>
+                                <button class="btn btn-info glyphicon glyphicon-edit" title="Edit" data-ng-click="edit(entry.activityId)"></button>
                                 <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
                             </td>
                         </tr>
@@ -68,7 +74,6 @@
         </div>
 
         <%@ include file="../jspf/footer.jspf" %>
-        <spring:url var="accountsNG" value="/resources/js/ng.accounts.js" />
-        <script type="text/javascript" src="${accountsNG}"></script>
+
     </body>
 </html>

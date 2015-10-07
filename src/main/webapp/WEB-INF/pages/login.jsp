@@ -12,8 +12,9 @@
     <head>
         <title>Sign in</title>
 
-        <%@ include file="../jspf/css.jspf"%>
+        <spring:url value="/resources/css/bootstrap.min.css" var="coreCss" />
         <spring:url value="/resources/css/login.css" var="loginCss" />
+        <link href="${coreCss}" type="text/css" rel="stylesheet" />
         <link href="${loginCss}" type="text/css" rel="stylesheet" />
     </head>
     <body>
@@ -36,7 +37,7 @@
                 <c:if test="${param.status=='logout'}">
                     <label style="color:green">Logged out successfully!</label>
                 </c:if>
-               
+
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
             </form>
         </div>

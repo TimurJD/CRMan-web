@@ -1,1 +1,5 @@
-var restPath = "/CRManWeb/api/";
+(function () {
+
+    window.restPath = "/CRManWeb/api/";
+
+}());

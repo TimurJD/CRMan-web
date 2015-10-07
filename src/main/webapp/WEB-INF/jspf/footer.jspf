@@ -2,30 +2,50 @@
 <%@ page pageEncoding="UTF-8"%>
 
 <footer class="footer">
-	<div class="container well well-sm">
-		<div class="row">
-			<div class="col-md-6">
-				<a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${admin}" class="text-muted">Manage platform</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${about}" class="text-muted">About us</a>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="${troubleshooting}" class="text-muted">Report bug</a>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="container">
-		<p align="center" class="text-muted"><tiles:insertAttribute name="footer" /></p>
-	</div> -->
+    <div class="container well well-sm">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="" class="text-muted">COPYRIGHT (c) 2015 VHSoft LTD.</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${admin}" class="text-muted">Manage platform</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${about}" class="text-muted">About us</a>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="${troubleshooting}" class="text-muted">Report bug</a>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<spring:url var="globalVars" value="/resources/js/global.js" />
-<script type="text/javascript" src="${globalVars}"></script>
+<!-- Core framework scripts -->
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
+
+
+<!-- Custom scripts -->
+
+<spring:url var="globalVars" value="/resources/js/global.js" />
+<spring:url var="extra" value="/resources/js/extra-scripts.js" />
+
+<script type="text/javascript" src="${globalVars}"></script>
+<script type="text/javascript" src="${extra}"></script>
+
+<!-- Angular scripts -->
+
+<spring:url var="ngConfig" value="/resources/js/ng-config.js" />
+<spring:url var="ngControllerFilter" value="/resources/js/ng-controller-filter.js" />
+<spring:url var="ngControllerTable" value="/resources/js/ng-controller-table.js" />
+<spring:url var="ngServiceData" value="/resources/js/ng-service-data.js" />
+<spring:url var="ngServiceShare" value="/resources/js/ng-service-share.js" />
+
+<script type="text/javascript" src="${ngConfig}"></script>
+<script type="text/javascript" src="${ngControllerFilter}"></script>
+<script type="text/javascript" src="${ngControllerTable}"></script>
+<script type="text/javascript" src="${ngServiceData}"></script>
+<script type="text/javascript" src="${ngServiceShare}"></script>
