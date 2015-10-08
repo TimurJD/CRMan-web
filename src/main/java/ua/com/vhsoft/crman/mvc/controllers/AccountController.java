@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AccountController {
 	
-	 private final Logger LOGGER = Logger.getLogger(this.getClass());
+	private final Logger LOGGER = Logger.getLogger(this.getClass());
 	
 	@RequestMapping(path = "/accounts")
 	public String showAccounts() {
