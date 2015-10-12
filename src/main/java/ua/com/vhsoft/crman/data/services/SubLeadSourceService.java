@@ -37,4 +37,19 @@ public class SubLeadSourceService implements AbstractService<SubLeadSource> {
     public void delete(SubLeadSource entity) {
         subLeadSourceRepository.delete(entity);
     }
+
+    @Override
+    public SubLeadSource findById(Integer id) {
+        return subLeadSourceRepository.findOne(id);
+    }
+
+    @Override
+    public SubLeadSource findOne(Predicate predicate) {
+        return subLeadSourceRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subLeadSourceRepository.delete(id);
+    }
 }

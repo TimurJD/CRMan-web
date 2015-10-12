@@ -38,6 +38,7 @@ public class SysFilterManipulator {
     /**
      * Retrieve all filters for current user
      * 
+     * @param tableName
      * @return list of filter objects
      */
     public List<SysFilter> getFiltersByUserAndTable(String tableName){
@@ -47,6 +48,8 @@ public class SysFilterManipulator {
         }
         return sysFilterService.findAll(sysFilterPredicate.filterByUserAndTable(sysUser, tableName));
     }
+    
+    
     
     //TODO add other CRUD methods
     

@@ -7,21 +7,99 @@
 (function () {
     'use strict';
 
-    angular.module('app').controller('FilterController', ['$scope', 'DataService', 'ShareService', function ($scope, dataService, shareService) {
+    angular.module('app').controller('FilterController', ['$scope', 'DataService', 'ShareService', filterController]);
 
-            $scope.fData = {};
 
+    function filterController($scope, dataService, shareService) {
+        var vm = this;
+
+        vm.filterData = {};
+        vm.filterData.rowSettings = [];
+        vm.filterData.newFilter = {};
+        vm.filterData.existingFilter = {};
+
+        vm.editEntry = editEntry;
+        vm.saveEntry = saveEntry;
+        vm.cancelEdition = cancelEdition;
+        vm.deleteEntry = deleteEntry;
+        vm.addFilter = addFilter;
+
+        initFilters();
+
+        function initFilters() {
             dataService.filters(shareService.getCurrentTable()).query(function (response) {
-                $scope.fData.filters = response;
+                vm.filterData.filters = response;
+                console.log(response);
+                initRowSetting();
             });
+        }
+
+        /**
+         * This function sets additional array that contains mirror of filter rows
+         * This is an indicator of the row that is currently under edition
+         * 
+         * @returns {undefined}
+         */
+        function initRowSetting() {
+            for (var i = vm.filterData.filters.length - 1; i >= 0; i--) {
+                vm.filterData.rowSettings[vm.filterData.filters[i].filterId] = false;
+            }
+        }
+
+        /**
+         * Indicator switcher for selected entry
+         * 
+         * @param {object} entry
+         * @returns {undefined}
+         */
+        function editEntry(entry) {
+            initRowSetting();
+            vm.filterData.rowSettings[entry.filterId] = true;
             
             
+        }
+
+        /**
+         * Save edited data from model and switch an indicator for selected entry
+         * 
+         * @param {type} entry
+         * @returns {undefined}
+         */
+        function saveEntry(entry) {
+            vm.filterData.rowSettings[entry.filterId] = false;
             
+        }
+        
+        /**
+         * Exit edit mode
+         * 
+         * @param {type} entry
+         * @returns {undefined}
+         */
+        function cancelEdition(entry) {
+            vm.filterData.rowSettings[entry.filterId] = false;
+        }
+        
+        /**
+         * Delete selected entry from DB
+         * 
+         * @param {type} entry
+         * @returns {undefined}
+         */
+        function deleteEntry(entry) {
             
+        }
+        
+        /**
+         * Add new filter from model
+         * 
+         * @returns {undefined}
+         */
+        function addFilter () {
+            
+        }
 
-        }]);
 
-
-
+    }
 
 }());

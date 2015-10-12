@@ -36,4 +36,19 @@ public class SubUnitTypeService implements AbstractService<SubUnitType> {
     public void delete(SubUnitType entity) {
         subUnitTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubUnitType findById(Integer id) {
+        return subUnitTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubUnitType findOne(Predicate predicate) {
+        return subUnitTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subUnitTypeRepository.delete(id);
+    }
 }

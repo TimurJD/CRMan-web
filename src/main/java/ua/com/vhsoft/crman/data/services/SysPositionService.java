@@ -36,4 +36,19 @@ public class SysPositionService implements AbstractService<SysPosition> {
     public void delete(SysPosition entity) {
         sysPositionRepository.delete(entity);
     }
+
+    @Override
+    public SysPosition findById(Integer id) {
+        return sysPositionRepository.findOne(id);
+    }
+
+    @Override
+    public SysPosition findOne(Predicate predicate) {
+        return sysPositionRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysPositionRepository.delete(id);
+    }
 }

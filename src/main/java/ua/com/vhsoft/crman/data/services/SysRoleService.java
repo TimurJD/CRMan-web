@@ -36,4 +36,19 @@ public class SysRoleService implements AbstractService<SysRole> {
     public void delete(SysRole entity) {
         sysRoleRepository.delete(entity);
     }
+
+    @Override
+    public SysRole findById(Integer id) {
+        return sysRoleRepository.findOne(id);
+    }
+
+    @Override
+    public SysRole findOne(Predicate predicate) {
+        return sysRoleRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysRoleRepository.delete(id);
+    }
 }

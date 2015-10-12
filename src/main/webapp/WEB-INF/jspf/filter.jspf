@@ -6,40 +6,58 @@
                 <h4 class="modal-title" id="myModalLabel">Filters</h4>
             </div>
             <div class="modal-body">
-                
-                <div data-ng-controller="FilterController">
+
+                <div data-ng-controller="FilterController as filter">
                     <div class="text-center">
                         <div>
-                            <div class="input-group-sm btn-group">
-                                <select class="btn dropdown" size="1"></select>
-                                <select class="btn" size="1"></select>
-                                <input class="form-control" type="text" />
-                                <button class="btn btn-success">Add</button>
-                            </div>
                             <table class="table table-responsive table-condensed table-hover" >
+                                <thead class="well">
+                                    <tr>
+                                        <td class="col-md-4">Column</td>
+                                        <td class="col-md-3">Condition</td>
+                                        <td class="col-md-5">Value</td>
+                                        <td class="col-md-4"></td>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr data-ng-repeat="entry in fData.filters">
-                                        <td>{{ entry.columnName}}</td>
-                                        <td>{{ entry.condition}}</td>
-                                        <td>{{ entry.value}}</td>
+                                    <tr data-ng-repeat="entry in filter.filterData.filters">
+                                        <td>
+                                            <div data-ng-hide="filter.filterData.rowSettings[entry.filterId]">{{ entry.columnName}}</div>
+                                            <div data-ng-show="filter.filterData.rowSettings[entry.filterId]"><select class="dropdown" size="1"></div>
+                                        </td>
+                                        <td>
+                                            <div data-ng-hide="filter.filterData.rowSettings[entry.filterId]">{{ entry.condition}}</div>
+                                            <div data-ng-show="filter.filterData.rowSettings[entry.filterId]"><select class="dropdown" size="1"></div>
+                                        </td>
+                                        <td>
+                                            <div data-ng-hide="filter.filterData.rowSettings[entry.filterId]">{{ entry.value}}</div>
+                                            <div data-ng-show="filter.filterData.rowSettings[entry.filterId]"><input class="form-control" type="text" /></div>
+                                        </td>
+
 
                                         <td class="text-right btn-group-xs">
-                                            <button class="btn btn-info glyphicon glyphicon-duplicate" title="Clone" data-ng-click="cloneFilter(entry.activityId)"></button>
-                                            <button class="btn btn-info glyphicon glyphicon-edit" title="Edit" data-ng-click="editFilter(entry.activityId)"></button>
-                                            <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="deleteFilter(entry.activityId)"></button>
+                                            <button class="btn btn-primary glyphicon glyphicon-edit" title="Edit" data-ng-hide="filter.filterData.rowSettings[entry.filterId]" data-ng-click="filter.editEntry(entry)"></button>
+                                            <button class="btn btn-success glyphicon glyphicon-saved" title="Save" data-ng-show="filter.filterData.rowSettings[entry.filterId]" data-ng-click="filter.saveEntry(entry)"></button>
+                                            <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-hide="filter.filterData.rowSettings[entry.filterId]" data-ng-click="filter.deleteFilter(entry)"></button>
+                                            <button class="btn btn-danger glyphicon glyphicon-circle-arrow-left" title="Cancel" data-ng-show="filter.filterData.rowSettings[entry.filterId]" data-ng-click="filter.cancelEdition(entry)"></button>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td><select class="dropdown" size="1"></select></td>
+                                        <td><select class="dropdown" size="1"></select></td>
+                                        <td><input class="form-control" type="text" /></td>
+                                        <td class="btn-group text-right"><button class="btn btn-success" data-ng-click="filter.addFilter()">Add</button></td>
                                     </tr>
                                 </tbody>
                             </table>
-                     
+
                         </div>
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

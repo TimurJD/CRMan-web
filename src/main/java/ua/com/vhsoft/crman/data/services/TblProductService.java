@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblProductService")
 public class TblProductService implements AbstractService<TblProduct> {
 
-	@Resource
-	private TblProductRepository tblProductRepository;
+    @Resource
+    private TblProductRepository tblProductRepository;
 
-	@Override
-	public TblProduct addOrUpdate(TblProduct entity) {
-		return tblProductRepository.save(entity);
-	}
+    @Override
+    public TblProduct addOrUpdate(TblProduct entity) {
+        return tblProductRepository.save(entity);
+    }
 
-	@Override
-	public List<TblProduct> findAll(Predicate predicate) {
-		return (List<TblProduct>) tblProductRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblProduct> findAll(Predicate predicate) {
+        return (List<TblProduct>) tblProductRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblProduct> findAll() {
-		return tblProductRepository.findAll();
-	}
+    @Override
+    public List<TblProduct> findAll() {
+        return tblProductRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblProduct entity) {
-		tblProductRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblProduct entity) {
+        tblProductRepository.delete(entity);
+    }
+
+    @Override
+    public TblProduct findById(Integer id) {
+        return tblProductRepository.findOne(id);
+    }
+
+    @Override
+    public TblProduct findOne(Predicate predicate) {
+        return tblProductRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblProductRepository.delete(id);
+    }
 }

@@ -36,4 +36,19 @@ public class SubCurrencyService implements AbstractService<SubCurrency> {
     public void delete(SubCurrency entity) {
         subCurrencyRepository.delete(entity);
     }
+
+    @Override
+    public SubCurrency findById(Integer id) {
+        return subCurrencyRepository.findOne(id);
+    }
+
+    @Override
+    public SubCurrency findOne(Predicate predicate) {
+        return subCurrencyRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subCurrencyRepository.delete(id);
+    }
 }

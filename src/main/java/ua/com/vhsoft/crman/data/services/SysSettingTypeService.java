@@ -37,4 +37,19 @@ public class SysSettingTypeService implements AbstractService<SysSettingType> {
     public void delete(SysSettingType entity) {
         sysSettingTypeRepository.delete(entity);
     }
+
+    @Override
+    public SysSettingType findById(Integer id) {
+        return sysSettingTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SysSettingType findOne(Predicate predicate) {
+        return sysSettingTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysSettingTypeRepository.delete(id);
+    }
 }

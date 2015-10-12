@@ -35,4 +35,19 @@ public class SysUserService implements AbstractService<SysUser> {
     public void delete(SysUser entity) {
         sysUserRepository.delete(entity);
     }
+
+    @Override
+    public SysUser findById(Integer id) {
+        return sysUserRepository.findOne(id);
+    }
+
+    @Override
+    public SysUser findOne(Predicate predicate) {
+        return sysUserRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysUserRepository.delete(id);
+    }
 }

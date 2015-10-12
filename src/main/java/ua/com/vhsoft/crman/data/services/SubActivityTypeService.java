@@ -36,4 +36,19 @@ public class SubActivityTypeService implements AbstractService<SubActivityType> 
     public void delete(SubActivityType entity) {
         subActivityTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubActivityType findById(Integer id) {
+        return subActivityTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubActivityType findOne(Predicate predicate) {
+        return subActivityTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subActivityTypeRepository.delete(id);
+    }
 }

@@ -36,4 +36,19 @@ public class SubInvoiceStatusService implements AbstractService<SubInvoiceStatus
     public void delete(SubInvoiceStatus entity) {
         subInvoiceStatusRepository.delete(entity);
     }
+
+    @Override
+    public SubInvoiceStatus findById(Integer id) {
+        return subInvoiceStatusRepository.findOne(id);
+    }
+
+    @Override
+    public SubInvoiceStatus findOne(Predicate predicate) {
+        return subInvoiceStatusRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subInvoiceStatusRepository.delete(id);
+    }
 }

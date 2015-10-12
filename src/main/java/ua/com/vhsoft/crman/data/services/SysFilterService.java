@@ -37,5 +37,20 @@ public class SysFilterService implements AbstractService<SysFilter> {
         sysFilterRepository.delete(entity);
     }
 
+    @Override
+    public SysFilter findById(Integer id) {
+        return sysFilterRepository.findOne(id);
+    }
+
+    @Override
+    public SysFilter findOne(Predicate predicate) {
+        return sysFilterRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysFilterRepository.delete(id);
+    }
+
     
 }

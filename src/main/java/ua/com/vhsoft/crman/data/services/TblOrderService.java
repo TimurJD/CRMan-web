@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblOrderService")
 public class TblOrderService implements AbstractService<TblOrder> {
 
-	@Resource
-	private TblOrderRepository tblOrderRepository;
+    @Resource
+    private TblOrderRepository tblOrderRepository;
 
-	@Override
-	public TblOrder addOrUpdate(TblOrder entity) {
-		return tblOrderRepository.save(entity);
-	}
+    @Override
+    public TblOrder addOrUpdate(TblOrder entity) {
+        return tblOrderRepository.save(entity);
+    }
 
-	@Override
-	public List<TblOrder> findAll(Predicate predicate) {
-		return (List<TblOrder>) tblOrderRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblOrder> findAll(Predicate predicate) {
+        return (List<TblOrder>) tblOrderRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblOrder> findAll() {
-		return tblOrderRepository.findAll();
-	}
+    @Override
+    public List<TblOrder> findAll() {
+        return tblOrderRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblOrder entity) {
-		tblOrderRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblOrder entity) {
+        tblOrderRepository.delete(entity);
+    }
+
+    @Override
+    public TblOrder findById(Integer id) {
+        return tblOrderRepository.findOne(id);
+    }
+
+    @Override
+    public TblOrder findOne(Predicate predicate) {
+        return tblOrderRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblOrderRepository.delete(id);
+    }
 }

@@ -53,8 +53,8 @@
                             <td>{{ entry.createdOn | date:'dd.MM.yyyy HH:mm' }}</td>
                             <td>{{ entry.createdBy.login}}</td>
                             <td class="text-right btn-group-xs">
-                                <button class="btn btn-info glyphicon glyphicon-duplicate" title="Clone" data-ng-click="clone(entry.activityId)"></button>
-                                <button class="btn btn-info glyphicon glyphicon-edit" title="Edit" data-ng-click="edit(entry.activityId)"></button>
+                                <button class="btn btn-primary glyphicon glyphicon-duplicate" title="Clone" data-ng-click="clone(entry.activityId)"></button>
+                                <button class="btn btn-primary glyphicon glyphicon-edit" title="Edit" data-ng-click="edit(entry.activityId)"></button>
                                 <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
                             </td>
                         </tr>

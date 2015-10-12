@@ -36,4 +36,19 @@ public class SubSexService implements AbstractService<SubSex> {
     public void delete(SubSex entity) {
         subSexRepository.delete(entity);
     }
+
+    @Override
+    public SubSex findById(Integer id) {
+        return subSexRepository.findOne(id);
+    }
+
+    @Override
+    public SubSex findOne(Predicate predicate) {
+        return subSexRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subSexRepository.delete(id);
+    }
 }

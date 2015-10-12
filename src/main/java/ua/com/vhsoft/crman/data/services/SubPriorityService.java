@@ -36,4 +36,19 @@ public class SubPriorityService implements AbstractService<SubPriority> {
     public void delete(SubPriority entity) {
         subPriorityRepository.delete(entity);
     }
+
+    @Override
+    public SubPriority findById(Integer id) {
+        return subPriorityRepository.findOne(id);
+    }
+
+    @Override
+    public SubPriority findOne(Predicate predicate) {
+        return subPriorityRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subPriorityRepository.delete(id);
+    }
 }

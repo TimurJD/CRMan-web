@@ -17,7 +17,6 @@ public class SubActivityResultService implements AbstractService<SubActivityResu
     @Resource
     private SubActivityResultRepository subActivityResultRepository;
 
-
     @Override
     public SubActivityResult addOrUpdate(SubActivityResult entity) {
         return subActivityResultRepository.saveAndFlush(entity);
@@ -36,5 +35,20 @@ public class SubActivityResultService implements AbstractService<SubActivityResu
     @Override
     public void delete(SubActivityResult entity) {
         subActivityResultRepository.delete(entity);
+    }
+
+    @Override
+    public SubActivityResult findById(Integer id) {
+        return subActivityResultRepository.findOne(id);
+    }
+
+    @Override
+    public SubActivityResult findOne(Predicate predicate) {
+        return subActivityResultRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subActivityResultRepository.delete(id);
     }
 }

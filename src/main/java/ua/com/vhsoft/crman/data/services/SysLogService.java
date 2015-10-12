@@ -38,4 +38,19 @@ public class SysLogService implements AbstractService<SysLog> {
         sysLogRepository.delete(entity);
     }
 
+    @Override
+    public SysLog findById(Integer id) {
+        return sysLogRepository.findOne(id);
+    }
+
+    @Override
+    public SysLog findOne(Predicate predicate) {
+        return sysLogRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysLogRepository.delete(id);
+    }
+
 }

@@ -36,4 +36,19 @@ public class SubActivityStatusService implements AbstractService<SubActivityStat
     public void delete(SubActivityStatus entity) {
         subActivityStatusRepository.delete(entity);
     }
+
+    @Override
+    public SubActivityStatus findById(Integer id) {
+        return subActivityStatusRepository.findOne(id);
+    }
+
+    @Override
+    public SubActivityStatus findOne(Predicate predicate) {
+        return subActivityStatusRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subActivityStatusRepository.delete(id);
+    }
 }

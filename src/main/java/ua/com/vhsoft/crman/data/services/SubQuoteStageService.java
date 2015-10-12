@@ -15,26 +15,41 @@ import ua.com.vhsoft.crman.mvc.models.SubQuoteStage;
  */
 public class SubQuoteStageService implements AbstractService<SubQuoteStage> {
 
-	@Resource
-	private SubQuoteStageRepository subQuoteStageRepository;
-	
-	@Override
-	public SubQuoteStage addOrUpdate(SubQuoteStage entity) {
-		return subQuoteStageRepository.save(entity);
-	}
+    @Resource
+    private SubQuoteStageRepository subQuoteStageRepository;
 
-	@Override
-	public List<SubQuoteStage> findAll(Predicate predicate) {
-		return (List<SubQuoteStage>) subQuoteStageRepository.findAll(predicate);
-	}
+    @Override
+    public SubQuoteStage addOrUpdate(SubQuoteStage entity) {
+        return subQuoteStageRepository.save(entity);
+    }
 
-	@Override
-	public List<SubQuoteStage> findAll() {
-		return subQuoteStageRepository.findAll();
-	}
+    @Override
+    public List<SubQuoteStage> findAll(Predicate predicate) {
+        return (List<SubQuoteStage>) subQuoteStageRepository.findAll(predicate);
+    }
 
-	@Override
-	public void delete(SubQuoteStage entity) {
-		subQuoteStageRepository.delete(entity);
-	}
+    @Override
+    public List<SubQuoteStage> findAll() {
+        return subQuoteStageRepository.findAll();
+    }
+
+    @Override
+    public void delete(SubQuoteStage entity) {
+        subQuoteStageRepository.delete(entity);
+    }
+
+    @Override
+    public SubQuoteStage findById(Integer id) {
+        return subQuoteStageRepository.findOne(id);
+    }
+
+    @Override
+    public SubQuoteStage findOne(Predicate predicate) {
+        return subQuoteStageRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subQuoteStageRepository.delete(id);
+    }
 }

@@ -36,4 +36,19 @@ public class SubRegionService implements AbstractService<SubRegion> {
     public void delete(SubRegion entity) {
         subRegionRepository.delete(entity);
     }
+
+    @Override
+    public SubRegion findById(Integer id) {
+        return subRegionRepository.findOne(id);
+    }
+
+    @Override
+    public SubRegion findOne(Predicate predicate) {
+        return subRegionRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subRegionRepository.delete(id);
+    }
 }

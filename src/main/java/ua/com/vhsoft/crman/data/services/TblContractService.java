@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblContractService")
 public class TblContractService implements AbstractService<TblContract> {
 
-	@Resource
-	private TblContractRepository tblContractRepository;
+    @Resource
+    private TblContractRepository tblContractRepository;
 
-	@Override
-	public TblContract addOrUpdate(TblContract entity) {
-		return tblContractRepository.save(entity);
-	}
+    @Override
+    public TblContract addOrUpdate(TblContract entity) {
+        return tblContractRepository.save(entity);
+    }
 
-	@Override
-	public List<TblContract> findAll(Predicate predicate) {
-		return (List<TblContract>) tblContractRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblContract> findAll(Predicate predicate) {
+        return (List<TblContract>) tblContractRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblContract> findAll() {
-		return tblContractRepository.findAll();
-	}
+    @Override
+    public List<TblContract> findAll() {
+        return tblContractRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblContract entity) {
-		tblContractRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblContract entity) {
+        tblContractRepository.delete(entity);
+    }
+
+    @Override
+    public TblContract findById(Integer id) {
+        return tblContractRepository.findOne(id);
+    }
+
+    @Override
+    public TblContract findOne(Predicate predicate) {
+        return tblContractRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblContractRepository.delete(id);
+    }
 }

@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblContactService")
 public class TblContactService implements AbstractService<TblContact> {
 
-	@Resource
-	private TblContactRepository tblContactRepository;
+    @Resource
+    private TblContactRepository tblContactRepository;
 
-	@Override
-	public TblContact addOrUpdate(TblContact entity) {
-		return tblContactRepository.save(entity);
-	}
+    @Override
+    public TblContact addOrUpdate(TblContact entity) {
+        return tblContactRepository.save(entity);
+    }
 
-	@Override
-	public List<TblContact> findAll(Predicate predicate) {
-		return (List<TblContact>) tblContactRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblContact> findAll(Predicate predicate) {
+        return (List<TblContact>) tblContactRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblContact> findAll() {
-		return tblContactRepository.findAll();
-	}
+    @Override
+    public List<TblContact> findAll() {
+        return tblContactRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblContact entity) {
-		tblContactRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblContact entity) {
+        tblContactRepository.delete(entity);
+    }
+
+    @Override
+    public TblContact findById(Integer id) {
+        return tblContactRepository.findOne(id);
+    }
+
+    @Override
+    public TblContact findOne(Predicate predicate) {
+        return tblContactRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblContactRepository.delete(id);
+    }
 }

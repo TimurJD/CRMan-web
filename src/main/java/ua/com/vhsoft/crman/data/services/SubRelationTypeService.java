@@ -36,4 +36,19 @@ public class SubRelationTypeService implements AbstractService<SubRelationType> 
     public void delete(SubRelationType entity) {
         subRelationTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubRelationType findById(Integer id) {
+        return subRelationTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubRelationType findOne(Predicate predicate) {
+        return subRelationTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subRelationTypeRepository.delete(id);
+    }
 }

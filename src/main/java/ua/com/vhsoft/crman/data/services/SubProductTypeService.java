@@ -36,4 +36,19 @@ public class SubProductTypeService implements AbstractService<SubProductType> {
     public void delete(SubProductType entity) {
         subProductTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubProductType findById(Integer id) {
+        return subProductTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubProductType findOne(Predicate predicate) {
+        return subProductTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subProductTypeRepository.delete(id);
+    }
 }

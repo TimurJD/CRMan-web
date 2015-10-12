@@ -36,4 +36,19 @@ public class SubIndustryService implements AbstractService<SubIndustry> {
     public void delete(SubIndustry entity) {
         subIndustryRepository.delete(entity);
     }
+
+    @Override
+    public SubIndustry findById(Integer id) {
+        return subIndustryRepository.findOne(id);
+    }
+
+    @Override
+    public SubIndustry findOne(Predicate predicate) {
+        return subIndustryRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subIndustryRepository.delete(id);
+    }
 }

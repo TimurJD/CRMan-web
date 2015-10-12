@@ -36,4 +36,19 @@ public class SubContractProductService implements AbstractService<SubContractPro
     public void delete(SubContractProduct entity) {
         subContractProductRepository.delete(entity);
     }
+
+    @Override
+    public SubContractProduct findById(Integer id) {
+        return subContractProductRepository.findOne(id);
+    }
+
+    @Override
+    public SubContractProduct findOne(Predicate predicate) {
+        return subContractProductRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subContractProductRepository.delete(id);
+    }
 }

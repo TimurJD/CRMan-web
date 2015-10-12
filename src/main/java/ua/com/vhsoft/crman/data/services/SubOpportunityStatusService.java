@@ -37,4 +37,19 @@ public class SubOpportunityStatusService implements AbstractService<SubOpportuni
     public void delete(SubOpportunityStatus entity) {
         subOpportunityStatusRepository.delete(entity);
     }
+
+    @Override
+    public SubOpportunityStatus findById(Integer id) {
+        return subOpportunityStatusRepository.findOne(id);
+    }
+
+    @Override
+    public SubOpportunityStatus findOne(Predicate predicate) {
+        return subOpportunityStatusRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subOpportunityStatusRepository.delete(id);
+    }
 }

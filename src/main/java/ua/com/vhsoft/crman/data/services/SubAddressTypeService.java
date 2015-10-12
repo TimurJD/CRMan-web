@@ -36,4 +36,19 @@ public class SubAddressTypeService implements AbstractService<SubAddressType> {
     public void delete(SubAddressType entity) {
         subAddressTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubAddressType findById(Integer id) {
+        return subAddressTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubAddressType findOne(Predicate predicate) {
+        return subAddressTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subAddressTypeRepository.delete(id);
+    }
 }

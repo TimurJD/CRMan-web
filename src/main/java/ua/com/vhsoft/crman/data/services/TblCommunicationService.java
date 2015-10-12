@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblCommunicationService")
 public class TblCommunicationService implements AbstractService<TblCommunication> {
 
-	@Resource
-	private TblCommunicationRepository tblCommunicationRepository;
+    @Resource
+    private TblCommunicationRepository tblCommunicationRepository;
 
-	@Override
-	public TblCommunication addOrUpdate(TblCommunication entity) {
-		return tblCommunicationRepository.save(entity);
-	}
+    @Override
+    public TblCommunication addOrUpdate(TblCommunication entity) {
+        return tblCommunicationRepository.save(entity);
+    }
 
-	@Override
-	public List<TblCommunication> findAll(Predicate predicate) {
-		return (List<TblCommunication>) tblCommunicationRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblCommunication> findAll(Predicate predicate) {
+        return (List<TblCommunication>) tblCommunicationRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblCommunication> findAll() {
-		return tblCommunicationRepository.findAll();
-	}
+    @Override
+    public List<TblCommunication> findAll() {
+        return tblCommunicationRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblCommunication entity) {
-		tblCommunicationRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblCommunication entity) {
+        tblCommunicationRepository.delete(entity);
+    }
+
+    @Override
+    public TblCommunication findById(Integer id) {
+        return tblCommunicationRepository.findOne(id);
+    }
+
+    @Override
+    public TblCommunication findOne(Predicate predicate) {
+        return tblCommunicationRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblCommunicationRepository.delete(id);
+    }
 }

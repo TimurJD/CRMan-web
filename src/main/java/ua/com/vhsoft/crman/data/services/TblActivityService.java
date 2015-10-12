@@ -14,26 +14,41 @@ import java.util.List;
 @Service("tblActivityService")
 public class TblActivityService implements AbstractService<TblActivity> {
 
-	@Resource
-	private TblActivityRepository tblActivityRepository;
+    @Resource
+    private TblActivityRepository tblActivityRepository;
 
-	@Override
-	public TblActivity addOrUpdate(TblActivity entity) {
-		return tblActivityRepository.save(entity);
-	}
+    @Override
+    public TblActivity addOrUpdate(TblActivity entity) {
+        return tblActivityRepository.save(entity);
+    }
 
-	@Override
-	public List<TblActivity> findAll(Predicate predicate) {
-		return (List<TblActivity>) tblActivityRepository.findAll(predicate);
-	}
+    @Override
+    public List<TblActivity> findAll(Predicate predicate) {
+        return (List<TblActivity>) tblActivityRepository.findAll(predicate);
+    }
 
-	@Override
-	public List<TblActivity> findAll() {
-		return tblActivityRepository.findAll();
-	}
+    @Override
+    public List<TblActivity> findAll() {
+        return tblActivityRepository.findAll();
+    }
 
-	@Override
-	public void delete(TblActivity entity) {
-		tblActivityRepository.delete(entity);
-	}
+    @Override
+    public void delete(TblActivity entity) {
+        tblActivityRepository.delete(entity);
+    }
+
+    @Override
+    public TblActivity findById(Integer id) {
+        return tblActivityRepository.findOne(id);
+    }
+
+    @Override
+    public TblActivity findOne(Predicate predicate) {
+        return tblActivityRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        tblActivityRepository.delete(id);
+    }
 }

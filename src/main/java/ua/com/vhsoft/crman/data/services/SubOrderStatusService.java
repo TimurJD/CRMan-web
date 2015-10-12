@@ -36,4 +36,19 @@ public class SubOrderStatusService implements AbstractService<SubOrderStatus> {
     public void delete(SubOrderStatus entity) {
         subOrderStatusRepository.delete(entity);
     }
+
+    @Override
+    public SubOrderStatus findById(Integer id) {
+        return subOrderStatusRepository.findOne(id);
+    }
+
+    @Override
+    public SubOrderStatus findOne(Predicate predicate) {
+        return subOrderStatusRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subOrderStatusRepository.delete(id);
+    }
 }

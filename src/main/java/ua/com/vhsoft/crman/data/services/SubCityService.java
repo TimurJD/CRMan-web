@@ -36,4 +36,19 @@ public class SubCityService implements AbstractService<SubCity> {
     public void delete(SubCity entity) {
         subCityRepository.delete(entity);
     }
+
+    @Override
+    public SubCity findById(Integer id) {
+        return subCityRepository.findOne(id);
+    }
+
+    @Override
+    public SubCity findOne(Predicate predicate) {
+        return subCityRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subCityRepository.delete(id);
+    }
 }

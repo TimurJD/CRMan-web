@@ -36,4 +36,19 @@ public class SubCountryService implements AbstractService<SubCountry> {
     public void delete(SubCountry entity) {
         subCountryRepository.delete(entity);
     }
+
+    @Override
+    public SubCountry findById(Integer id) {
+        return subCountryRepository.findOne(id);
+    }
+
+    @Override
+    public SubCountry findOne(Predicate predicate) {
+        return subCountryRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subCountryRepository.delete(id);
+    }
 }

@@ -36,4 +36,19 @@ public class SubCommunicationTypeService implements AbstractService<SubCommunica
     public void delete(SubCommunicationType entity) {
         subCommunicationTypeRepository.delete(entity);
     }
+
+    @Override
+    public SubCommunicationType findById(Integer id) {
+        return subCommunicationTypeRepository.findOne(id);
+    }
+
+    @Override
+    public SubCommunicationType findOne(Predicate predicate) {
+        return subCommunicationTypeRepository.findOne(predicate);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        subCommunicationTypeRepository.delete(id);
+    }
 }
