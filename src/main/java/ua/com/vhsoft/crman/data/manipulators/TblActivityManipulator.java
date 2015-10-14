@@ -26,11 +26,7 @@ public class TblActivityManipulator {
      * @return TblActtivity object if found or null otherwise
      */
     public TblActivity getActivityByID(Integer id) {
-        List<TblActivity> listOfActivities = tblActivityService.findAll(tblActivityPredicate.filterById(id));
-        if (listOfActivities.size() > 0) {
-            return listOfActivities.get(0);
-        }
-        return null;
+        return tblActivityService.findById(id);
     }
 
     /**

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.vhsoft.crman.data.manipulators.SysFilterManipulator;
+import ua.com.vhsoft.crman.data.manipulators.SysUserManipulator;
 import ua.com.vhsoft.crman.mvc.models.SysFilter;
 
 /**
@@ -20,6 +21,8 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
 
     @Autowired
     private SysFilterManipulator sysFilterManipulator;
+    @Autowired
+    private SysUserManipulator sysUserManipulator;
     
     @Override
     public SysFilter getByID(Integer id) {
@@ -29,12 +32,12 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
     @Override
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public @ResponseBody List<SysFilter> getAll() {
-        return sysFilterManipulator.getFiltersByUser();
+        return sysFilterManipulator.getFiltersByUser(sysUserManipulator.getCurrentlyLoggedInUser());
     }
     
     @RequestMapping(value = "/{table}", method = RequestMethod.GET)
     public @ResponseBody List<SysFilter> getAll(@PathVariable String table) {
-        return sysFilterManipulator.getFiltersByUserAndTable(table);
+        return sysFilterManipulator.getFiltersByUserAndTable(sysUserManipulator.getCurrentlyLoggedInUser(), table);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ua.com.vhsoft.crman.data.manipulators;
 
+import com.mysema.query.types.expr.BooleanExpression;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,30 +20,30 @@ public class SysFilterManipulator {
     private SysFilterService sysFilterService;
     @Autowired
     private SysFilterPredicate sysFilterPredicate;
-    @Autowired
-    private SysUserManipulator sysUserManipulator;
     
     /**
      * Retrieve all filters for current user
      * 
+     * @param sysUser
      * @return list of filter objects
      */
-    public List<SysFilter> getFiltersByUser(){
-        SysUser sysUser = sysUserManipulator.getCurrentlyLoggedInUser();
+    public List<SysFilter> getFiltersByUser(SysUser sysUser){
         if (sysUser == null) {
             return null;
         }
-        return sysFilterService.findAll(sysFilterPredicate.filterByUser(sysUser));
+        BooleanExpression filterByUser = sysFilterPredicate.filterByUser(sysUser);
+        List<SysFilter> filter =  sysFilterService.findAll(filterByUser);
+        return filter;
     }
     
     /**
      * Retrieve all filters for current user
      * 
+     * @param sysUser
      * @param tableName
      * @return list of filter objects
      */
-    public List<SysFilter> getFiltersByUserAndTable(String tableName){
-        SysUser sysUser = sysUserManipulator.getCurrentlyLoggedInUser();
+    public List<SysFilter> getFiltersByUserAndTable(SysUser sysUser, String tableName){
         if (sysUser == null) {
             return null;
         }

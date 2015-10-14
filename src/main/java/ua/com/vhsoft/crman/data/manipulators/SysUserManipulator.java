@@ -29,11 +29,30 @@ public class SysUserManipulator {
     public SysUser getCurrentlyLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
-        List<SysUser> sysUsers = sysUserService.findAll(sysUserPredicate.filterByName(name));
+        return getUserByLogin(name);
+    }
+
+    /**
+     * Fetch user from db by his login
+     *
+     * @param login
+     * @return user object or null if not found
+     */
+    public SysUser getUserByLogin(String login) {
+        List<SysUser> sysUsers = sysUserService.findAll(sysUserPredicate.filterByName(login));
         if (sysUsers.isEmpty()) {
             return null;
         }
         return sysUsers.get(0);
+    }
+
+    /**
+     * Fetch a list of all users
+     *
+     * @return list of SysUser objects
+     */
+    public List<SysUser> getAllUsers() {
+        return sysUserService.findAll();
     }
 
 }

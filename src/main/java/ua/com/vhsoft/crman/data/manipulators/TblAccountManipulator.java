@@ -1,10 +1,8 @@
 package ua.com.vhsoft.crman.data.manipulators;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import ua.com.vhsoft.crman.data.predicates.TblAccountPredicate;
 import ua.com.vhsoft.crman.data.services.TblAccountService;
 import ua.com.vhsoft.crman.mvc.models.TblAccount;
@@ -27,11 +25,7 @@ public class TblAccountManipulator {
      * @return TblAccount object if found or null otherwise
      */
     public TblAccount getAccountByID(Integer id) {
-        List<TblAccount> result = tblAccountService.findAll(tblAccountPredicate.filterById(id));
-        if (result.size() > 0) {
-            return result.get(0);
-        }
-        return null;
+        return tblAccountService.findById(id);
     }
 
     /**

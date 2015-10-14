@@ -17,7 +17,8 @@ public class CRManWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(CRManMVCConfig.class, CRManJPAConfig.class, CRManSecurityConfig.class);
+        ctx.register(CRManMVCConfig.class);
+//        ctx.register(CRManMVCConfig.class, CRManJPAConfig.class, CRManSecurityConfig.class);
         ctx.setServletContext(servletContext);
         
         servletContext.addListener(new ContextLoaderListener(ctx));
