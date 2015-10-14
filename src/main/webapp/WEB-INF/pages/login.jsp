@@ -22,33 +22,39 @@
     <body>
         <spring:url value="/j_spring_security_check"  var="ssCheck" />
         <div class="container">
-            <form class="form-group form-signin" name="form" action='${ssCheck}' method="POST">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <label class="control-label" for="login"></label>
-                <input type="text" name="j_username" class="form-control" placeholder="Name" id="login" required autofocus> 
-                <label class="control-label" for="pass"></label>
-                <input type="password" name="j_password" class="form-control" placeholder="Password" id="pass" required> 
-                <div class="checkbox">
+            <form name="form" action='${ssCheck}' method="POST">
+                <h2 class="form-group login-div">Please sign in</h2>
+                <div class="form-group login-div">
+                	<label class="control-label" for="login">Login</label>
+                	<input type="text" name="j_username" class="form-control" id="login" required> 
+                </div>
+                <div class="form-group login-div">
+	                <label class="control-label" for="pass">Password</label>
+	                <input type="password" name="j_password" class="form-control" id="pass" required> 
+	            </div>  
+	            <br/>
+                <div class="checkbox form-group login-div">
                     <label>
                         <input type="checkbox" value="remember-me">Remember me
                     </label>
                 </div>
-                <br />
-                <c:if test="${param.status=='error'}">
-                    <label style="color:red">Invalid username or password!</label>
-                </c:if>
-
-                <c:if test="${param.status=='logout'}">
-                    <label style="color:green">Logged out successfully!</label>
-                </c:if>
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+                <div class="login-div">
+	                <c:if test="${param.status=='error'}">
+	                    <label style="color:red">Invalid username or password!</label>
+	                </c:if>
+	                <c:if test="${param.status=='logout'}">
+	                    <label style="color:green">Logged out successfully!</label>
+	                </c:if>
+	            </div>
+	            <div class="form-group login-div">
+	                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+	            </div>
             </form>
         </div>
 
         <spring:url var="globalVars" value="/resources/js/global.js" />
         <spring:url var="extra" value="/resources/js/extra-scripts.js" />
-
-
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="${extra}"></script>
     </body>
 </html>

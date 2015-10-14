@@ -1,22 +1,25 @@
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 150px;
     background-color: #eee;
 }
 
-.form-signin {
-    max-width: 330px;
-    padding: 15px;
+.login-div {	
+    max-width: 330px;    
     margin: 0 auto;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
+
+.form-group {
+    display: flex;
+    height: 55px;
+}
+.form-group .form-group-heading,
+.form-group .checkbox {
     margin-bottom: 10px;
 }
-.form-signin .checkbox {
+.form-group .checkbox {
     font-weight: normal;
 }
-.form-signin .form-control {
+.form-group .form-control {
     position: relative;
     height: auto;
     -webkit-box-sizing: border-box;
@@ -25,16 +28,36 @@ body {
     padding: 10px;
     font-size: 16px;
 }
-.form-signin .form-control:focus {
-    z-index: 2;
+
+.form-group.focused .control-label {
+    opacity: 1;
+    transform: scale(0.75);
 }
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+
+.control-label {
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.4;
+    pointer-events: none;
+    position: absolute;
+    transform: translate3d(0, 22px, 0) scale(1);
+    transform-origin: left top;
+    transition: 240ms;
 }
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+
+.form-control {
+    align-self: flex-end;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: transparent;
+    transition: 240ms;
+}
+
+.form-control:focus::-webkit-input-placeholder {
+    transition: none;
+}
+
+.form-group.focused .form-control::-webkit-input-placeholder {
+    color: #bbb;
 }
