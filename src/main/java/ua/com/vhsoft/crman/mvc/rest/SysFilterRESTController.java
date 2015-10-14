@@ -17,13 +17,13 @@ import ua.com.vhsoft.crman.mvc.models.SysFilter;
  */
 @RestController
 @RequestMapping("api/filters")
-public class SysFilterRESTController implements AbstractRESTController<SysFilter>{
+public class SysFilterRESTController implements AbstractRESTController<SysFilter> {
 
     @Autowired
     private SysFilterManipulator sysFilterManipulator;
     @Autowired
     private SysUserManipulator sysUserManipulator;
-    
+
     @Override
     public SysFilter getByID(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -31,12 +31,14 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
 
     @Override
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public @ResponseBody List<SysFilter> getAll() {
+    public @ResponseBody
+    List<SysFilter> getAll() {
         return sysFilterManipulator.getFiltersByUser(sysUserManipulator.getCurrentlyLoggedInUser());
     }
-    
+
     @RequestMapping(value = "/{table}", method = RequestMethod.GET)
-    public @ResponseBody List<SysFilter> getAll(@PathVariable String table) {
+    @ResponseBody
+    public List<SysFilter> getAll(@PathVariable String table) {
         return sysFilterManipulator.getFiltersByUserAndTable(sysUserManipulator.getCurrentlyLoggedInUser(), table);
     }
 
@@ -46,11 +48,13 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
     }
 
     @Override
+    @RequestMapping(value = "/edit")
     public SysFilter editEntry(SysFilter entry) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    @RequestMapping(value = "/delete/{id}")
     public SysFilter deleteByID(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -59,5 +63,5 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
     public SysFilter deleteByObject(SysFilter object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
