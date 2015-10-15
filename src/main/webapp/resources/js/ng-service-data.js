@@ -5,7 +5,7 @@
 
 (function () {
 
-    angular.module('app').factory('DataService', ['$resource', function ($resource) {
+    angular.module('app').factory('DataService', ['$resource', '$http', function ($resource) {
 
             var data = {
                 all: findAll,
@@ -29,7 +29,6 @@
             function findFilters(tableName) {
                 return $resource(restPath + 'filters/' + tableName);
             }
-
 
         }]);
 }());

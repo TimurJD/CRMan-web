@@ -7,6 +7,7 @@
 (function () {
 
     angular.module('app').factory('ShareService', function () {
+    	
         var data = {
             currentTable: ''
         };
@@ -28,11 +29,5 @@
         function setCurrentTable(currentTable) {
             data.currentTable = currentTable;
         }
-
-
-
     });
-
-
 }());
-

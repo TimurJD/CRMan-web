@@ -19,15 +19,12 @@
 
         <%@ include file="../jspf/header.jspf" %>
 
-        <div class="container" data-ng-controller="TableController as tableCtrl" data-ng-init="init('activities')">
+        <div class="container" data-ng-controller="TableController as tableCtrl" data-ng-init="tableCtrl.init('activities')">
 
             <%@ include file="../jspf/filter.jspf" %>
+            <%@ include file="../jspf/activities-edit.jspf" %>
             <%@ include file="../jspf/table-control.jspf" %>
-
             
-
-
-
             <div>
 
                 <table class="table table-striped table-responsive table-condensed table-hover" >
@@ -44,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in data.tableData| filter:search">
+                        <tr data-ng-repeat="entry in tableCtrl.data.tableData| filter:search">
                             <td><input type="checkbox" data-ng-model="entry.selected"></td>
                             <td>{{ entry.title}}</td>
                             <td>{{ entry.description}}</td>
@@ -53,9 +50,9 @@
                             <td>{{ entry.createdOn | date:'dd.MM.yyyy HH:mm' }}</td>
                             <td>{{ entry.createdBy.login}}</td>
                             <td class="text-right btn-group-xs">
-                                <button class="btn btn-primary glyphicon glyphicon-duplicate" title="Clone" data-ng-click="clone(entry.activityId)"></button>
-                                <button class="btn btn-primary glyphicon glyphicon-edit" title="Edit" data-ng-click="edit(entry.activityId)"></button>
-                                <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="delete(entry.activityId)"></button>
+                                <button class="btn btn-primary glyphicon glyphicon-duplicate" title="Clone" data-ng-click="tableCtrl.clone(entry.activityId)"></button>
+                                <button class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#activitiesModal" title="Edit" data-ng-click="tableCtrl.edit(entry.activityId)"></button>
+                                <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="tableCtrl.delete(entry.activityId)"></button>
                             </td>
                         </tr>
                     </tbody>
