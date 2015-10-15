@@ -10,11 +10,13 @@
     angular.module('app').controller('FilterController', ['$scope', 'DataService', 'ShareService', filterController]);
 
 
-    function filterController($scope, dataService, shareService) {
+    function filterController($scope, filterService, shareService) {
         var vm = this;
-
+        
+        vm.filter = filterService;
+        vm.shared = shareService;
+        
         vm.filterData = {};
-        vm.filterData.rowSettings = [];
         vm.filterData.newFilter = {};
         vm.filterData.existingFilter = {};
 
@@ -27,11 +29,8 @@
         initFilters();
 
         function initFilters() {
-            dataService.filters(shareService.getCurrentTable()).query(function (response) {
-                vm.filterData.filters = response;
-                console.log(response);
-                initRowSetting();
-            });
+            vm.filter.findFilters();
+            
         }
 
         /**

@@ -42,10 +42,12 @@
 <spring:url var="ngControllerFilter" value="/resources/js/ng-controller-filter.js" />
 <spring:url var="ngControllerTable" value="/resources/js/ng-controller-table.js" />
 <spring:url var="ngServiceData" value="/resources/js/ng-service-data.js" />
+<spring:url var="ngServiceFilter" value="/resources/js/ng-service-filter.js" />
 <spring:url var="ngServiceShare" value="/resources/js/ng-service-share.js" />
 
 <script type="text/javascript" src="${ngConfig}"></script>
 <script type="text/javascript" src="${ngControllerFilter}"></script>
 <script type="text/javascript" src="${ngControllerTable}"></script>
 <script type="text/javascript" src="${ngServiceData}"></script>
+<script type="text/javascript" src="${ngServiceFilter}"></script>
 <script type="text/javascript" src="${ngServiceShare}"></script>

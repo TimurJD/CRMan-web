@@ -10,9 +10,10 @@ public interface AbstractRESTController<T> {
     
     T getByID(Integer id);
     List<T> getAll();
+    List<T> getFilteredData();
     T createEntry(T entry);
     T editEntry(T entry);
-    T deleteByID(Integer id);
-    T deleteByObject(T object);
+    void deleteByID(Integer id);
+    void deleteByObject(T object);
     
 }

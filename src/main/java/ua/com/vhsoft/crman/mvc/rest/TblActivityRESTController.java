@@ -20,17 +20,25 @@ public class TblActivityRESTController implements AbstractRESTController<TblActi
 
     @Autowired
     private TblActivityManipulator tblActivityManipulator;
-    
+
     @Override
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody TblActivity getByID(@PathVariable("id") Integer id) {
+    public @ResponseBody
+    TblActivity getByID(@PathVariable("id") Integer id) {
         return tblActivityManipulator.getActivityByID(id);
     }
 
     @Override
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public @ResponseBody List<TblActivity> getAll() {
+    public @ResponseBody
+    List<TblActivity> getAll() {
         return tblActivityManipulator.getAllActivities();
+    }
+
+    @Override
+    @RequestMapping(value = "/filtered", method = RequestMethod.GET)
+    public List<TblActivity> getFilteredData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -44,12 +52,13 @@ public class TblActivityRESTController implements AbstractRESTController<TblActi
     }
 
     @Override
-    public TblActivity deleteByID(Integer id) {
+    public void deleteByID(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public TblActivity deleteByObject(TblActivity object) {
+    public void deleteByObject(TblActivity object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
+
 }

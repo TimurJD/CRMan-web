@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -17,7 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 @ContextConfiguration(classes = {ConfigTest.class},  loader = AnnotationConfigWebContextLoader.class)
-public class AbstractSpringContextTest {
+public class AbstractSpringContextTest extends AbstractTransactionalJUnit4SpringContextTests {
     
     /**
      * We need this method to avoid java.lang.Exception: No runnable methods

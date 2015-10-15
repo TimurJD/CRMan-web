@@ -3,6 +3,7 @@ package ua.com.vhsoft.crman.mvc.rest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,25 +43,34 @@ public class SysFilterRESTController implements AbstractRESTController<SysFilter
         return sysFilterManipulator.getFiltersByUserAndTable(sysUserManipulator.getCurrentlyLoggedInUser(), table);
     }
 
+    //TODO refactor merge add and edit into one mrthod /save
     @Override
-    public SysFilter createEntry(SysFilter entry) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public SysFilter createEntry(@RequestBody SysFilter entry) {
+        return sysFilterManipulator.persistFilter(entry);
+    }
+
+    @Override
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public SysFilter editEntry(@RequestBody SysFilter entry) {
+        return sysFilterManipulator.persistFilter(entry);
+    }
+
+    @Override
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteByID(@PathVariable Integer id) {
+        sysFilterManipulator.deleteFilter(id);
+    }
+
+    @Override
+    public void deleteByObject(SysFilter object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    @RequestMapping(value = "/edit")
-    public SysFilter editEntry(SysFilter entry) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    @RequestMapping(value = "/delete/{id}")
-    public SysFilter deleteByID(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public SysFilter deleteByObject(SysFilter object) {
+    public List<SysFilter> getFilteredData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

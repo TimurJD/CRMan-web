@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                <div data-ng-controller="FilterController as filter">
+                <div data-ng-controller="FilterController as filterCtrl">
                     <div class="text-center">
                         <div>
                             <table class="table table-responsive table-condensed table-hover" >
@@ -20,7 +20,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr data-ng-repeat="entry in filter.filterData.filters">
+                                    <tr data-ng-repeat="entry in filterCtrl.filter.filters">
                                         <td>
                                             <div data-ng-hide="filter.filterData.rowSettings[entry.filterId]">{{ entry.columnName}}</div>
                                             <div data-ng-show="filter.filterData.rowSettings[entry.filterId]"><select class="dropdown" size="1"></div>
