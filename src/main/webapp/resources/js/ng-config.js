@@ -8,7 +8,9 @@
 (function () {
     'use strict';
 
-    angular.module('app', []);
-    
-
+    angular.module('app', [])
+    	.config(function ($httpProvider) {
+//	        $httpProvider.defaults.headers.common["X-Domain"] = "";
+	        $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
+		});
 }());

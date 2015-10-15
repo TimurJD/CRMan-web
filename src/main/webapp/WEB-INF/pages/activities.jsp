@@ -52,7 +52,7 @@
                             <td>{{ entry.createdBy.login}}</td>
                             <td class="text-right btn-group-xs">
                                 <button class="btn btn-primary glyphicon glyphicon-duplicate" title="Clone" data-ng-click="tableCtrl.clone(entry.activityId)"></button>
-                                <button class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#activitiesModal" title="Edit" data-ng-click="tableCtrl.edit(entry.activityId)"></button>
+                                <button class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#activitiesModal" title="Edit" data-ng-click="tableCtrl.fetchData(entry)"></button>
                                 <button class="btn btn-danger glyphicon glyphicon-remove" title="Delete" data-ng-click="tableCtrl.delete(entry.activityId)"></button>
                             </td>
                         </tr>

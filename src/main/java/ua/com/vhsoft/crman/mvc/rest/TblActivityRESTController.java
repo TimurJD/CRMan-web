@@ -1,12 +1,15 @@
 package ua.com.vhsoft.crman.mvc.rest;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import ua.com.vhsoft.crman.data.manipulators.TblActivityManipulator;
 import ua.com.vhsoft.crman.mvc.models.TblActivity;
 
@@ -40,6 +43,7 @@ public class TblActivityRESTController implements AbstractRESTController<TblActi
     public List<TblActivity> getFilteredData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
     @Override
     public TblActivity createEntry(TblActivity entry) {
@@ -47,8 +51,10 @@ public class TblActivityRESTController implements AbstractRESTController<TblActi
     }
 
     @Override
-    public TblActivity editEntry(TblActivity entry) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public TblActivity editEntry(@RequestBody TblActivity entry) {
+        return tblActivityManipulator.saveActivity(entry);
     }
 
     @Override

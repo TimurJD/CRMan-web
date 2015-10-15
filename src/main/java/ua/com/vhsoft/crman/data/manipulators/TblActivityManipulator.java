@@ -37,5 +37,13 @@ public class TblActivityManipulator {
     public List<TblActivity> getAllActivities() {
         return tblActivityService.findAll();
     }
-
+    
+    /**
+     * Save activity to DB
+     *
+     * @return List of TblActivitiy objects
+     */
+    public TblActivity saveActivity(TblActivity entity) {
+    	return tblActivityService.addOrUpdate(entity);
+    }
 }

@@ -47,10 +47,12 @@
             });
         }
 
-        function editEntry(tableName) {
+        function editEntry(tableName, dataToSave) {
             $http({
                 method: "POST",
-                url: restPath + tableName + '/edit'
+                url: restPath + tableName + '/edit',
+//                headers: {'Content-Type': 'application/json'},
+                data: dataToSave
             }).then(function (response) {
                 console.log(response);
             }, function (error) {

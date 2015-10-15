@@ -21,13 +21,17 @@
         vm.init = init;
         vm.addToTable = addToTable;
         vm.deleteSelected = deleteSelected;
+        vm.fetchData = fetchData;  
 
-
+        vm.editedObject = {};
+        
         vm.clone = function (id) {
             console.log('clone ' + id); //TODO
         };
-        vm.edit = function (id) {
-            console.log('edit' + id); //TODO
+        
+        vm.edit = function() {
+        	vm.data.editEntry(vm.shared.getCurrentTable(), JSON.stringify(vm.editedObject));
+            console.log('edit' + vm.editedObject); //TODO
         };
         vm.delete = function (id) {
             console.log('delete ' + id); //TODO
@@ -70,6 +74,10 @@
             vm.data.findAll(tableName);
         }
 
+        function fetchData(entry) {
+        	console.log(entry);
+        	vm.editedObject = entry;
+        }
+        
     }
-
 }());
