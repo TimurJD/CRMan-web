@@ -7,7 +7,7 @@
 (function () {
     'use strict';
 
-    angular.module('app').controller('FilterController', ['$scope', 'DataService', 'ShareService', filterController]);
+    angular.module('app').controller('FilterController', ['$scope', 'FilterService', 'ShareService', filterController]);
 
 
     function filterController($scope, filterService, shareService) {
@@ -29,8 +29,7 @@
         initFilters();
 
         function initFilters() {
-            vm.filter.findFilters();
-            
+            vm.filter.findFilters(vm.shared.getCurrentTable());
         }
 
         /**
@@ -40,8 +39,8 @@
          * @returns {undefined}
          */
         function initRowSetting() {
-            for (var i = vm.filterData.filters.length - 1; i >= 0; i--) {
-                vm.filterData.rowSettings[vm.filterData.filters[i].filterId] = false;
+            for (var i = vm.filter.filters.length - 1; i >= 0; i--) {
+                vm.filter.filterRowSettings[vm.filter.filters[i].filterId] = false;
             }
         }
 

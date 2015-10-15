@@ -5,7 +5,10 @@
 
 (function () {
 
-    angular.module('app').factory('DataService', ['$http', function ($http) {
+    angular.module('app').factory('FilterService', ['$http', filterService]);
+
+
+    function filterService($http) {
 
         var data = {
             findFilters: findFilters,
@@ -21,7 +24,8 @@
         // --------Filter share functions----------
 
 
-        
+
+
         // --------Filter crud functions---------
 
         function findFilters(tableName) {
@@ -30,6 +34,7 @@
                 url: restPath + 'filters/' + tableName
             }).then(function (response) {
                 console.log(response);
+                data.filters = response.data;
 
             }, function (error) {
                 console.error(error);
@@ -59,6 +64,6 @@
         }
 
 
-    }]);
+    }
 
 }());

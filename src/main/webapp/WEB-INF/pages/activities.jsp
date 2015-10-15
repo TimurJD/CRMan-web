@@ -41,7 +41,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entry in tableCtrl.data.tableData| filter:search">
+
+                        <tr data-ng-repeat="entry in tableCtrl.data.tableData.data | filter:search">
                             <td><input type="checkbox" data-ng-model="entry.selected"></td>
                             <td>{{ entry.title}}</td>
                             <td>{{ entry.description}}</td>

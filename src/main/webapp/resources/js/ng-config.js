@@ -3,6 +3,8 @@
  * Якщо ні, то, напевно, хтось інший...
  */
 
+/* global angular */
+
 (function () {
     'use strict';
 

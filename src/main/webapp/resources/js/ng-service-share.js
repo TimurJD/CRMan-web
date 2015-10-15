@@ -5,9 +5,11 @@
 
 
 (function () {
+    'use strict'
 
-    angular.module('app').factory('ShareService', function () {
-    	
+    angular.module('app').factory('ShareService', shareService);
+
+    function shareService() {
         var data = {
             currentTable: ''
         };
@@ -29,5 +31,7 @@
         function setCurrentTable(currentTable) {
             data.currentTable = currentTable;
         }
-    });
+    }
+
 }());
+

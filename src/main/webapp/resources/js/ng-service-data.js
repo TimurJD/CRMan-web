@@ -30,19 +30,18 @@
                 url: restPath + tableName + '/all'
             }).then(function (response) {
                 console.log(response);
-                data.all = response;
+                data.tableData = response;
             }, function (error) {
                 console.error(error);
             });
         }
-
         function findFiltered(tableName) {
             $http({
                 method: "GET",
                 url: restPath + tableName + '/filtered'
             }).then(function (response) {
                 console.log(response);
-                data.filteredData = response;
+                data.tableData = response;
             }, function (error) {
                 console.error(error);
             });
